@@ -1,5 +1,4 @@
-.btn,
-button {
+.button {
   display: inline-block;
   font-weight: 400;
   font-family: 'SourceSansPro-Regular', 'Source Sans Pro', serif;
@@ -13,27 +12,100 @@ button {
   background-color: #205493;
   color: #fff;
 }
-.btn:hover:not(:disabled):not(.disabled),
-button:hover:not(:disabled):not(.disabled) {
+.button:hover:not(:disabled) {
   border-color: #205493;
   color: #205493;
   background-color: #fff;
 }
-.btn:disabled,
-button:disabled,
-.btn.disabled,
-button.disabled {
+.button:disabled,
+.button.disabled {
   background-color: #f1f1f1;
   color: #5B616B;
   cursor: auto;
 }
-.btn.secondary,
-button.secondary {
+.button-secondary {
   background-color: #3e94cf;
 }
-.btn.secondary:hover,
-button.secondary:hover {
+.button-secondary:hover:not(:disabled) {
   border-color: #3e94cf;
   color: #3e94cf;
   background-color: #fff;
+}
+.button-cancel {
+  background-color: #fff;
+  color: #205493;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.button-cancel:hover:not(:disabled) {
+  border-color: #3e94cf;
+  color: #3e94cf;
+}
+.button-forward {
+  position: relative;
+  margin-right: 9px;
+  border-radius: 3px 0 0 3px;
+}
+.button-forward:after {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  right: -19px;
+  top: -1px;
+  border: 13px solid transparent;
+  border-width: 14px 9px;
+  border-left-color: #205493;
+}
+.button-forward:before {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  right: -19px;
+  top: -1px;
+  border: 13px solid transparent;
+  border-width: 14px 9px;
+  border-left-color: transparent;
+}
+.button-forward:hover:not(:disabled):after {
+  content: '';
+  border-left-color: white;
+  right: -18px;
+}
+.button-forward:hover:not(:disabled):before {
+  content: '';
+  border-left-color: #205493;
+}
+.button-back {
+  position: relative;
+  margin-left: 9px;
+  border-radius: 0 3px 3px 0;
+}
+.button-back:after {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  left: -19px;
+  top: -1px;
+  border: 13px solid transparent;
+  border-width: 14px 9px;
+  border-right-color: #205493;
+}
+.button-back:before {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  left: -19px;
+  top: -1px;
+  border: 13px solid transparent;
+  border-width: 14px 9px;
+  border-right-color: transparent;
+}
+.button-back:hover:not(:disabled):after {
+  content: '';
+  border-right-color: white;
+  left: -18px;
+}
+.button-back:hover:not(:disabled):before {
+  content: '';
+  border-right-color: #205493;
 }
