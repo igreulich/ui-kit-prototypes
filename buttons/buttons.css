@@ -56,6 +56,10 @@
   border-width: 14px 9px;
   border-left-color: #205493;
 }
+.button-forward.button-secondary:after,
+.button-forward.button-secondary:before {
+  border-left-color: #3e94cf;
+}
 .button-forward:hover:not(:disabled):after {
   content: '';
   border-left-color: white;
@@ -76,6 +80,10 @@
   border: 13px solid transparent;
   border-width: 14px 9px;
   border-right-color: #205493;
+}
+.button-back.button-secondary:after,
+.button-back.button-secondary:before {
+  border-right-color: #3e94cf;
 }
 .button-back:hover:not(:disabled):after {
   content: '';

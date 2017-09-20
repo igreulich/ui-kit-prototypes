@@ -60,6 +60,10 @@
     border-width: 14px 9px;
     border-left-color: @blue;
   }
+  &.button-secondary:after,
+  &.button-secondary:before {
+    border-left-color: @light-blue;
+  }
   &:hover:not(:disabled):after{
     content: '';
     border-left-color: white;
@@ -80,6 +84,10 @@
     border: 13px solid transparent;
     border-width: 14px 9px;
     border-right-color: @blue;
+  }
+  &.button-secondary:after,
+  &.button-secondary:before {
+    border-right-color: @light-blue;
   }
   &:hover:not(:disabled):after{
     content: '';
