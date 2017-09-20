@@ -17,8 +17,7 @@
   color: #205493;
   background-color: #fff;
 }
-.button:disabled,
-.button.disabled {
+.button:disabled {
   background-color: #f1f1f1;
   color: #5B616B;
   cursor: auto;
@@ -46,16 +45,7 @@
   margin-right: 9px;
   border-radius: 3px 0 0 3px;
 }
-.button-forward:after {
-  content: '';
-  position: absolute;
-  display: inline-block;
-  right: -19px;
-  top: -1px;
-  border: 13px solid transparent;
-  border-width: 14px 9px;
-  border-left-color: #205493;
-}
+.button-forward:after,
 .button-forward:before {
   content: '';
   position: absolute;
@@ -64,32 +54,23 @@
   top: -1px;
   border: 13px solid transparent;
   border-width: 14px 9px;
-  border-left-color: transparent;
+  border-left-color: #205493;
+}
+.button-forward.button-secondary:after,
+.button-forward.button-secondary:before {
+  border-left-color: #3e94cf;
 }
 .button-forward:hover:not(:disabled):after {
   content: '';
   border-left-color: white;
   right: -18px;
 }
-.button-forward:hover:not(:disabled):before {
-  content: '';
-  border-left-color: #205493;
-}
 .button-back {
   position: relative;
   margin-left: 9px;
   border-radius: 0 3px 3px 0;
 }
-.button-back:after {
-  content: '';
-  position: absolute;
-  display: inline-block;
-  left: -19px;
-  top: -1px;
-  border: 13px solid transparent;
-  border-width: 14px 9px;
-  border-right-color: #205493;
-}
+.button-back:after,
 .button-back:before {
   content: '';
   position: absolute;
@@ -98,14 +79,14 @@
   top: -1px;
   border: 13px solid transparent;
   border-width: 14px 9px;
-  border-right-color: transparent;
+  border-right-color: #205493;
+}
+.button-back.button-secondary:after,
+.button-back.button-secondary:before {
+  border-right-color: #3e94cf;
 }
 .button-back:hover:not(:disabled):after {
   content: '';
   border-right-color: white;
   left: -18px;
-}
-.button-back:hover:not(:disabled):before {
-  content: '';
-  border-right-color: #205493;
 }
