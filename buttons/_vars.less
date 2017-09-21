@@ -1,2 +1,9 @@
 @blue: #205493;
-@light-blue: #3e94cf;
+@blue-light: #3e94cf;
+@arrow-width: .9rem;
+@font-normal: 1.2rem;
+@line-height-normal: calc(@font-normal * 1.2); //Need line height in rems for button-height math
+@button-border-width: 1px;
+@button-vertical-padding: .6rem;
+@button-horizontal-padding: 2.8rem;
+@button-height: calc(@line-height-normal ~"+" calc(@button-vertical-padding * 2) ~"+" calc(@button-border-width * 2));

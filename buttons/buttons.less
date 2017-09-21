@@ -1,14 +1,17 @@
 @import '_vars.less';
+html {
+  font-size: 10px;
+}
 
 .button {
   display: inline-block;
   font-weight: 400;
   font-family: 'SourceSansPro-Regular', 'Source Sans Pro', sans-serif;
-  font-size: 12px;
-  line-height: normal;
+  font-size: @font-normal;
+  line-height: @line-height-normal;
   outline: none;
-  border: 1px solid transparent;
-  padding: 6px 28px;
+  border: @button-border-width solid transparent;
+  padding: @button-vertical-padding @button-horizontal-padding;
   border-radius: 3px;
   cursor: pointer;
   background-color: @blue;
@@ -25,10 +28,10 @@
   }
 }
 .button--secondary {
-  background-color: @light-blue;
+  background-color: @blue-light;
   &:hover:not(:disabled) {
-    border-color: @light-blue;
-    color: @light-blue;
+    border-color: @blue-light;
+    color: @blue-light;
     background-color: #fff;
   }
 }
@@ -38,33 +41,34 @@
   text-transform: uppercase;
   font-weight: bold;
   &:hover:not(:disabled) {
-    border-color: @light-blue;
-    color: @light-blue;
+    border-color: @blue-light;
+    color: @blue-light;
   }
 }
 .button--forward {
   position: relative;
-  margin-right: 9px;
+  margin-right: @arrow-width;
   border-radius: 3px 0 0 3px;
   &:after,
   &:before {
     content: '';
     position: absolute;
     display: inline-block;
-    right: -19px;
+    right: calc(-@arrow-width ~"-" @button-border-width);
     top: -1px;
-    border: 13px solid transparent;
-    border-width: 14px 9px;
+    border-style: solid;
+    border-color: transparent transparent transparent @blue;
+    border-width: calc(@button-height ~"/" 2) 0 calc(@button-height ~"/" 2) @arrow-width;
     border-left-color: @blue;
   }
   &.button--secondary:after,
   &.button--secondary:before {
-    border-left-color: @light-blue;
+    border-left-color: @blue-light;
   }
   &:hover:not(:disabled):after{
     content: '';
     border-left-color: white;
-    right: -18px;
+    right: -@arrow-width;
   }
 }
 .button--back {
@@ -84,7 +88,7 @@
   }
   &.button--secondary:after,
   &.button--secondary:before {
-    border-right-color: @light-blue;
+    border-right-color: @blue-light;
   }
   &:hover:not(:disabled):after{
     content: '';

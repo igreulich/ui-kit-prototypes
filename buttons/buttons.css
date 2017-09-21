@@ -1,12 +1,15 @@
+html {
+  font-size: 10px;
+}
 .button {
   display: inline-block;
   font-weight: 400;
   font-family: 'SourceSansPro-Regular', 'Source Sans Pro', sans-serif;
-  font-size: 12px;
-  line-height: normal;
+  font-size: 1.2rem;
+  line-height: calc(1.44rem);
   outline: none;
   border: 1px solid transparent;
-  padding: 6px 28px;
+  padding: 0.6rem 2.8rem;
   border-radius: 3px;
   cursor: pointer;
   background-color: #205493;
@@ -42,7 +45,7 @@
 }
 .button--forward {
   position: relative;
-  margin-right: 9px;
+  margin-right: 0.9rem;
   border-radius: 3px 0 0 3px;
 }
 .button--forward:after,
@@ -50,10 +53,11 @@
   content: '';
   position: absolute;
   display: inline-block;
-  right: -19px;
+  right: calc(-0.9rem - 1px);
   top: -1px;
-  border: 13px solid transparent;
-  border-width: 14px 9px;
+  border-style: solid;
+  border-color: transparent transparent transparent #205493;
+  border-width: calc(calc(calc(1.44rem) + calc(1.2rem) + calc(2px)) / 2) 0 calc(calc(calc(1.44rem) + calc(1.2rem) + calc(2px)) / 2) 0.9rem;
   border-left-color: #205493;
 }
 .button--forward.button--secondary:after,
@@ -63,7 +67,7 @@
 .button--forward:hover:not(:disabled):after {
   content: '';
   border-left-color: white;
-  right: -18px;
+  right: -0.9rem;
 }
 .button--back {
   position: relative;
