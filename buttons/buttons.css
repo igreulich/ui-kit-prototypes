@@ -1,7 +1,7 @@
 .button {
   display: inline-block;
   font-weight: 400;
-  font-family: 'SourceSansPro-Regular', 'Source Sans Pro', serif;
+  font-family: 'SourceSansPro-Regular', 'Source Sans Pro', sans-serif;
   font-size: 12px;
   line-height: normal;
   outline: none;
@@ -22,31 +22,31 @@
   color: #5B616B;
   cursor: auto;
 }
-.button-secondary {
+.button--secondary {
   background-color: #3e94cf;
 }
-.button-secondary:hover:not(:disabled) {
+.button--secondary:hover:not(:disabled) {
   border-color: #3e94cf;
   color: #3e94cf;
   background-color: #fff;
 }
-.button-cancel {
+.button--cancel {
   background-color: #fff;
   color: #205493;
   text-transform: uppercase;
   font-weight: bold;
 }
-.button-cancel:hover:not(:disabled) {
+.button--cancel:hover:not(:disabled) {
   border-color: #3e94cf;
   color: #3e94cf;
 }
-.button-forward {
+.button--forward {
   position: relative;
   margin-right: 9px;
   border-radius: 3px 0 0 3px;
 }
-.button-forward:after,
-.button-forward:before {
+.button--forward:after,
+.button--forward:before {
   content: '';
   position: absolute;
   display: inline-block;
@@ -56,22 +56,22 @@
   border-width: 14px 9px;
   border-left-color: #205493;
 }
-.button-forward.button-secondary:after,
-.button-forward.button-secondary:before {
+.button--forward.button--secondary:after,
+.button--forward.button--secondary:before {
   border-left-color: #3e94cf;
 }
-.button-forward:hover:not(:disabled):after {
+.button--forward:hover:not(:disabled):after {
   content: '';
   border-left-color: white;
   right: -18px;
 }
-.button-back {
+.button--back {
   position: relative;
   margin-left: 9px;
   border-radius: 0 3px 3px 0;
 }
-.button-back:after,
-.button-back:before {
+.button--back:after,
+.button--back:before {
   content: '';
   position: absolute;
   display: inline-block;
@@ -81,11 +81,11 @@
   border-width: 14px 9px;
   border-right-color: #205493;
 }
-.button-back.button-secondary:after,
-.button-back.button-secondary:before {
+.button--back.button--secondary:after,
+.button--back.button--secondary:before {
   border-right-color: #3e94cf;
 }
-.button-back:hover:not(:disabled):after {
+.button--back:hover:not(:disabled):after {
   content: '';
   border-right-color: white;
   left: -18px;

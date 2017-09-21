@@ -3,7 +3,7 @@
 .button {
   display: inline-block;
   font-weight: 400;
-  font-family: 'SourceSansPro-Regular', 'Source Sans Pro', serif;
+  font-family: 'SourceSansPro-Regular', 'Source Sans Pro', sans-serif;
   font-size: 12px;
   line-height: normal;
   outline: none;
@@ -13,9 +13,6 @@
   cursor: pointer;
   background-color: @blue;
   color: #fff;
-  // -webkit-transition: all .2s ease-in-out;
-  // -o-transition: all .2s ease-in-out;
-  // transition: all .2s ease-in-out;
   &:hover:not(:disabled) {
     border-color: @blue;
     color: @blue;
@@ -27,7 +24,7 @@
     cursor: auto;
   }
 }
-.button-secondary {
+.button--secondary {
   background-color: @light-blue;
   &:hover:not(:disabled) {
     border-color: @light-blue;
@@ -35,7 +32,7 @@
     background-color: #fff;
   }
 }
-.button-cancel {
+.button--cancel {
   background-color: #fff;
   color: @blue;
   text-transform: uppercase;
@@ -45,7 +42,7 @@
     color: @light-blue;
   }
 }
-.button-forward {
+.button--forward {
   position: relative;
   margin-right: 9px;
   border-radius: 3px 0 0 3px;
@@ -60,8 +57,8 @@
     border-width: 14px 9px;
     border-left-color: @blue;
   }
-  &.button-secondary:after,
-  &.button-secondary:before {
+  &.button--secondary:after,
+  &.button--secondary:before {
     border-left-color: @light-blue;
   }
   &:hover:not(:disabled):after{
@@ -70,7 +67,7 @@
     right: -18px;
   }
 }
-.button-back {
+.button--back {
   position: relative;
   margin-left: 9px;
   border-radius: 0 3px 3px 0;
@@ -85,8 +82,8 @@
     border-width: 14px 9px;
     border-right-color: @blue;
   }
-  &.button-secondary:after,
-  &.button-secondary:before {
+  &.button--secondary:after,
+  &.button--secondary:before {
     border-right-color: @light-blue;
   }
   &:hover:not(:disabled):after{
