@@ -55,11 +55,10 @@ html {
     position: absolute;
     display: inline-block;
     right: calc(-@arrow-width ~"-" @button-border-width);
-    top: -1px;
+    top: -@button-border-width;
     border-style: solid;
     border-color: transparent transparent transparent @blue;
     border-width: calc(@button-height ~"/" 2) 0 calc(@button-height ~"/" 2) @arrow-width;
-    border-left-color: @blue;
   }
   &.button--secondary:after,
   &.button--secondary:before {
@@ -73,18 +72,18 @@ html {
 }
 .button--back {
   position: relative;
-  margin-left: 9px;
+  margin-left: @arrow-width;
   border-radius: 0 3px 3px 0;
   &:after,
   &:before {
     content: '';
     position: absolute;
     display: inline-block;
-    left: -19px;
-    top: -1px;
-    border: 13px solid transparent;
-    border-width: 14px 9px;
-    border-right-color: @blue;
+    left: calc(-@arrow-width ~"-" @button-border-width);
+    top: -@button-border-width;
+    border-style: solid;
+    border-color: transparent @blue transparent transparent;
+    border-width: calc(@button-height ~"/" 2) @arrow-width calc(@button-height ~"/" 2) 0;
   }
   &.button--secondary:after,
   &.button--secondary:before {
@@ -93,6 +92,6 @@ html {
   &:hover:not(:disabled):after{
     content: '';
     border-right-color: white;
-    left: -18px;
+    left: -@arrow-width;
   }
 }
