@@ -1,12 +1,15 @@
+html {
+  font-size: 10px;
+}
 .button {
   display: inline-block;
   font-weight: 400;
-  font-family: 'SourceSansPro-Regular', 'Source Sans Pro', serif;
-  font-size: 12px;
-  line-height: normal;
+  font-family: 'SourceSansPro-Regular', 'Source Sans Pro', sans-serif;
+  font-size: 1.2rem;
+  line-height: calc(1.44rem);
   outline: none;
   border: 1px solid transparent;
-  padding: 6px 28px;
+  padding: 0.6rem 2.8rem;
   border-radius: 3px;
   cursor: pointer;
   background-color: #205493;
@@ -22,71 +25,71 @@
   color: #5B616B;
   cursor: auto;
 }
-.button-secondary {
+.button--secondary {
   background-color: #3e94cf;
 }
-.button-secondary:hover:not(:disabled) {
+.button--secondary:hover:not(:disabled) {
   border-color: #3e94cf;
   color: #3e94cf;
   background-color: #fff;
 }
-.button-cancel {
+.button--cancel {
   background-color: #fff;
   color: #205493;
   text-transform: uppercase;
   font-weight: bold;
 }
-.button-cancel:hover:not(:disabled) {
+.button--cancel:hover:not(:disabled) {
   border-color: #3e94cf;
   color: #3e94cf;
 }
-.button-forward {
+.button--forward {
   position: relative;
-  margin-right: 9px;
+  margin-right: 0.9rem;
   border-radius: 3px 0 0 3px;
 }
-.button-forward:after,
-.button-forward:before {
+.button--forward:after,
+.button--forward:before {
   content: '';
   position: absolute;
   display: inline-block;
-  right: -19px;
+  right: calc(-0.9rem - 1px);
   top: -1px;
-  border: 13px solid transparent;
-  border-width: 14px 9px;
-  border-left-color: #205493;
+  border-style: solid;
+  border-color: transparent transparent transparent #205493;
+  border-width: calc(calc(calc(1.44rem) + calc(1.2rem) + calc(2px)) / 2) 0 calc(calc(calc(1.44rem) + calc(1.2rem) + calc(2px)) / 2) 0.9rem;
 }
-.button-forward.button-secondary:after,
-.button-forward.button-secondary:before {
+.button--forward.button--secondary:after,
+.button--forward.button--secondary:before {
   border-left-color: #3e94cf;
 }
-.button-forward:hover:not(:disabled):after {
+.button--forward:hover:not(:disabled):after {
   content: '';
   border-left-color: white;
-  right: -18px;
+  right: -0.9rem;
 }
-.button-back {
+.button--back {
   position: relative;
-  margin-left: 9px;
+  margin-left: 0.9rem;
   border-radius: 0 3px 3px 0;
 }
-.button-back:after,
-.button-back:before {
+.button--back:after,
+.button--back:before {
   content: '';
   position: absolute;
   display: inline-block;
-  left: -19px;
+  left: calc(-0.9rem - 1px);
   top: -1px;
-  border: 13px solid transparent;
-  border-width: 14px 9px;
-  border-right-color: #205493;
+  border-style: solid;
+  border-color: transparent #205493 transparent transparent;
+  border-width: calc(calc(calc(1.44rem) + calc(1.2rem) + calc(2px)) / 2) 0.9rem calc(calc(calc(1.44rem) + calc(1.2rem) + calc(2px)) / 2) 0;
 }
-.button-back.button-secondary:after,
-.button-back.button-secondary:before {
+.button--back.button--secondary:after,
+.button--back.button--secondary:before {
   border-right-color: #3e94cf;
 }
-.button-back:hover:not(:disabled):after {
+.button--back:hover:not(:disabled):after {
   content: '';
   border-right-color: white;
-  left: -18px;
+  left: -0.9rem;
 }
