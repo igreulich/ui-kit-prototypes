@@ -1,0 +1,40 @@
+.modal__overlay {
+  background-color: rgba(0,0,0,.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal{
+  width: 60%;
+  background-color: #fff;
+}
+.modal__header {
+  background-color: #112e51;
+  color: #fff;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h1 {
+    display: inline-block;
+    font-size: 16px;
+    margin: 0;
+    font-family: 'Merriweather-Bold', 'Merriweather Bold', 'Merriweather', serif;
+    font-weight: bold;
+  }
+}
+.modal__button--close {
+  font-size: 25px;
+  cursor: pointer;
+}
+.modal__content {
+  padding: 10px;
+  border: 1px solid #797979;
+  border-top: none;
+}
