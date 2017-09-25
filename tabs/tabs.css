@@ -1,0 +1,47 @@
+html {
+  font-size: 10px;
+}
+.tab-section {
+  font-size: 1.2rem;
+}
+.tab-section > label {
+  display: inline-block;
+  padding: .5rem 1rem;
+  border: .1rem solid black;
+  cursor: pointer;
+}
+.placeholder-name section {
+  display: none;
+}
+#placeholder-name2 .tab-wrapper {
+  position: relative;
+}
+#placeholder-name2 label {
+  display: inline-block;
+  padding: .5rem 1rem;
+  border: .1rem solid black;
+  cursor: pointer;
+}
+#placeholder-name2 section {
+  display: inline-block;
+}
+#placeholder-name2 section > div {
+  display: none;
+  position: absolute;
+  left: 0;
+}
+#placeholder-name2 input:checked ~ div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+  width: 100%;
+  text-align: center;
+}
+#placeholder-name2 .funtimes {
+  height: 600px;
+  background-color: lightgreen;
+}
+.spacer {
+  margin: 50px;
+}

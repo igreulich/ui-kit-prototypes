@@ -1,0 +1,73 @@
+@import '_vars.less';
+
+html {
+  font-size: 10px;
+}
+.tab-section {
+  font-size: @font-normal;
+  & > input[type="radio"] {
+    // visibility: hidden;
+    // position: absolute;
+    // left: -99999px;
+    // top: -999999px;
+  }
+  & > label {
+    display:inline-block;
+    padding: .5rem 1rem;
+    border: .1rem solid black;
+    cursor: pointer;
+  }
+  & > section {
+    //display: none;
+  }
+  .tab1:checked ~ .content1,
+  .tab2:checked ~ .content2,
+  .tab3:checked ~ .content3,
+  .tab4:checked ~ .content4 {
+    //display: block;
+  }
+}
+.placeholder-name section {
+  display:none;
+}
+#placeholder-name2 {
+  .tab-wrapper {
+    position: relative;
+  }
+  label {
+    display:inline-block;
+    padding: .5rem 1rem;
+    border: .1rem solid black;
+    cursor: pointer;
+  }
+  section {
+    display: inline-block;
+  }
+  section > div {
+    display: none;
+    position: absolute;
+    //bottom: 0;
+    left: 0;
+  }
+  input:checked ~ div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+    width: 100%;
+    text-align: center;
+  }
+  .funtimes {
+    height: 600px;
+    background-color: lightgreen;
+  }
+
+}
+
+
+
+//with bar height= 600px
+//without bar MAX height = 600px
+.spacer {
+  margin:50px;
+}
