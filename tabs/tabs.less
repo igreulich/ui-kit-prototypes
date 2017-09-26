@@ -1,53 +1,68 @@
 @import '_vars.less';
 
-@tabs-height-normal: 60rem;
-@tabs-height-short: 30rem;
-@tabs-height-tall: 90rem;
+@tabs-section-height-normal: 60rem;
+@tabs-section-height-short: 30rem;
+@tabs-section-height-tall: 90rem;
+
+@tab-line-height: calc(@font-normal * 1.2); //Need line height in rems for tab-height math
+@tab-border-width: 1px;
+@tab-arrow-width: 2rem;
+@tab-vertical-padding: .6rem;
+@tab-horizontal-padding: 1rem;
+@tab-height: calc(@tab-line-height ~"+" calc(@tab-vertical-padding * 2));
 
 html {
   font-size: 10px;
 }
 .tabs-section {
-  font-size: @font-normal;
-  font-family: @font-family-normal;
 
   .tab-wrapper {
     position: relative;
   }
   .tab {
     display: inline-block;
+    margin-right: .5rem; //space between tabs
+    &:first-child {
+      margin-right: calc(.5rem ~"-" @tab-border-width); //adjusts for left positioning of first tab
+    }
     & > label {
       display: inline-block;
       position: relative;
       top: 0;
-      padding: .6rem 1rem;
+      padding: @tab-vertical-padding @tab-horizontal-padding;
+      box-sizing: border-box;
       min-width: 10rem;
       color: white;
+      font-family: @font-family-normal;
+      font-size: @font-normal;
+      line-height: @tab-line-height;
       background-color: @blue-light;
-      border: 1px solid @blue-light;
+      border: @tab-border-width solid @blue-light;
       border-bottom-width: 0;
       border-radius: 3px 3px 0 0;
       cursor: pointer;
-      &::after {
+      &::after,
+      &::before {
         content: '';
         position: absolute;
         top: 0;
-        right: -2rem;
+        right: -@tab-arrow-width;
         width: 0;
       	height: 0;
         z-index: 1;
-      	border-bottom: 2.6rem solid @blue-light;
-      	border-right: 2rem solid transparent;
+      	border-bottom: @tab-height solid @blue-light;
+      	border-right: @tab-arrow-width solid transparent;
       }
       &:hover {
         background-color: @blue-dark;
+        border-color: @blue-dark;
         &::after {
           border-bottom-color: @blue-dark;
         }
       }
     }
     &:first-child label {
-      left: -1px;
+      left: -@tab-border-width;
     }
     & > input {
       visibility: hidden;
@@ -64,37 +79,30 @@ html {
   .tab > input:checked {
     &~label {
       background-color: white;
-      border: 1px solid @blue-dark;
+      border: @tab-border-width solid @blue-dark;
       border-bottom-width: 0;
       color: @blue-dark;
       &::after {
         content: '';
-        right:-1.9rem;
+        right:calc(-@tab-arrow-width ~"+" @tab-border-width);
         border-bottom-color: white;
       }
       &::before {
         content: '';
-        width: 0;
-      	height: 0;
-        z-index: 1;
-        position: absolute;
-        top: 0;
-        right: -2rem;
-      	border-bottom: 2.6rem solid @blue-dark;
-      	border-right: 2rem solid transparent;
+      	border-bottom-color: @blue-dark;
       }
     }
     &~.tab-content {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 60rem;
+      height: @tabs-section-height-normal;
       width: 100%;
     }
   }
 
   .content-section {
-    height: 60rem;
-    outline: 1px solid @blue-dark;
+    height: @tabs-section-height-normal;
+    outline: @tab-border-width solid @blue-dark;
   }
 }
