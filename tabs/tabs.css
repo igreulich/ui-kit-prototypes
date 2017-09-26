@@ -77,13 +77,22 @@ html {
   border-bottom-color: #205493;
 }
 .tabs-section .tab > input:checked ~ .tab-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
   height: 60rem;
   width: 100%;
+  padding: 1rem;
+  overflow: auto;
+  box-sizing: border-box;
 }
 .tabs-section .content-section {
   height: 60rem;
   outline: 1px solid #205493;
+}
+.tabs-section--short .tab > input:checked ~ .tab-content,
+.tabs-section--short .content-section {
+  height: 30rem;
+}
+.tabs-section--tall .tab > input:checked ~ .tab-content,
+.tabs-section--tall .content-section {
+  height: 90rem;
 }

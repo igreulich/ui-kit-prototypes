@@ -93,16 +93,29 @@ html {
       }
     }
     &~.tab-content {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: block;
       height: @tabs-section-height-normal;
       width: 100%;
+      padding: 1rem;
+      overflow: auto;
+      box-sizing: border-box;
     }
   }
 
   .content-section {
     height: @tabs-section-height-normal;
     outline: @tab-border-width solid @blue-dark;
+  }
+}
+.tabs-section--short {
+  .tab > input:checked ~ .tab-content,
+  .content-section {
+    height: @tabs-section-height-short;
+  }
+}
+.tabs-section--tall {
+  .tab > input:checked ~ .tab-content,
+  .content-section {
+    height: @tabs-section-height-tall;
   }
 }
