@@ -16,7 +16,7 @@ html {
 }
 .tabs-section {
 
-  .tab-wrapper {
+  .tab__wrapper {
     position: relative;
   }
   .tab {
@@ -71,7 +71,7 @@ html {
       left: -999999999rem;
     }
   }
-  .tab-content {
+  .tab__content {
     position: absolute;
     left: 0;
     display: none;
@@ -82,6 +82,7 @@ html {
       border: @tab-border-width solid @blue-dark;
       border-bottom-width: 0;
       color: @blue-dark;
+      cursor: auto;
       &::after {
         content: '';
         right:calc(-@tab-arrow-width ~"+" @tab-border-width);
@@ -92,7 +93,7 @@ html {
       	border-bottom-color: @blue-dark;
       }
     }
-    &~.tab-content {
+    &~.tab__content {
       display: block;
       height: @tabs-section-height-normal;
       width: 100%;
@@ -108,13 +109,13 @@ html {
   }
 }
 .tabs-section--short {
-  .tab > input:checked ~ .tab-content,
+  .tab > input:checked ~ .tab__content,
   .content-section {
     height: @tabs-section-height-short;
   }
 }
 .tabs-section--tall {
-  .tab > input:checked ~ .tab-content,
+  .tab > input:checked ~ .tab__content,
   .content-section {
     height: @tabs-section-height-tall;
   }
