@@ -1,0 +1,110 @@
+html {
+  font-size: 10px;
+}
+.tabs-section .tab__wrapper {
+  position: relative;
+  z-index: 1;
+}
+.tabs-section .tab {
+  display: inline-block;
+  margin-right: .5rem;
+}
+.tabs-section .tab:first-child {
+  margin-right: calc(0.5rem - 1px);
+}
+.tabs-section .tab > label {
+  display: inline-block;
+  position: relative;
+  top: 0;
+  padding: 0.6rem 1rem;
+  box-sizing: border-box;
+  min-width: 10rem;
+  color: white;
+  font-family: 'SourceSansPro-Regular', 'Source Sans Pro', sans-serif;
+  font-size: 1.2rem;
+  line-height: calc(1.44rem);
+  background-color: #3e94cf;
+  border: 1px solid #3e94cf;
+  border-bottom-width: 0;
+  border-radius: 3px 3px 0 0;
+  cursor: pointer;
+}
+.tabs-section .tab > label::after,
+.tabs-section .tab > label::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -2rem;
+  width: 0;
+  height: 0;
+  z-index: 1;
+  border-bottom: calc(calc(1.44rem) + calc(1.2rem)) solid #3e94cf;
+  border-right: 2rem solid transparent;
+}
+.tabs-section .tab > label:hover {
+  background-color: #205493;
+  border-color: #205493;
+}
+.tabs-section .tab > label:hover::after {
+  border-bottom-color: #205493;
+}
+.tabs-section .tab:first-child label {
+  left: -1px;
+}
+.tabs-section .tab > input {
+  visibility: hidden;
+  position: absolute;
+  top: -99999999rem;
+  left: -999999999rem;
+}
+.tabs-section .tab__content {
+  position: absolute;
+  left: 0;
+  display: none;
+}
+.tabs-section .tab > input:checked ~ label {
+  background-color: white;
+  border: 1px solid #205493;
+  border-bottom-width: 0;
+  color: #205493;
+  cursor: auto;
+}
+.tabs-section .tab > input:checked ~ label::after {
+  content: '';
+  right: calc(-2rem + 1px);
+  border-bottom-color: white;
+}
+.tabs-section .tab > input:checked ~ label::before {
+  content: '';
+  border-bottom-color: #205493;
+}
+.tabs-section .tab > input:checked ~ .tab__content {
+  display: block;
+  height: 60rem;
+  width: 100%;
+  padding: 1rem;
+  overflow: auto;
+  box-sizing: border-box;
+}
+.tabs-section .content-section {
+  height: 60rem;
+  outline: 1px solid #205493;
+  position: relative;
+}
+.tabs-section--short .tab > input:checked ~ .tab__content,
+.tabs-section--short .content-section {
+  height: 30rem;
+}
+.tabs-section--tall .tab > input:checked ~ .tab__content,
+.tabs-section--tall .content-section {
+  height: 90rem;
+}
+.content-section__button-bar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #aeb0b5;
+  z-index: 1;
+  box-sizing: border-box;
+  padding: .5rem 1rem;
+}
