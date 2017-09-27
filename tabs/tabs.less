@@ -18,6 +18,7 @@ html {
 
   .tab__wrapper {
     position: relative;
+    z-index: 1;
   }
   .tab {
     display: inline-block;
@@ -106,6 +107,7 @@ html {
   .content-section {
     height: @tabs-section-height-normal;
     outline: @tab-border-width solid @blue-dark;
+    position: relative; //breaks outline things
   }
 }
 .tabs-section--short {
@@ -119,4 +121,13 @@ html {
   .content-section {
     height: @tabs-section-height-tall;
   }
+}
+.content-section__button-bar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #aeb0b5;
+  z-index: 1;
+  box-sizing: border-box;
+  padding: .5rem 1rem;
 }

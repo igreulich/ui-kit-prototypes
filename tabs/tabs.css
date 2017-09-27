@@ -3,6 +3,7 @@ html {
 }
 .tabs-section .tab__wrapper {
   position: relative;
+  z-index: 1;
 }
 .tabs-section .tab {
   display: inline-block;
@@ -88,6 +89,7 @@ html {
 .tabs-section .content-section {
   height: 60rem;
   outline: 1px solid #205493;
+  position: relative;
 }
 .tabs-section--short .tab > input:checked ~ .tab__content,
 .tabs-section--short .content-section {
@@ -96,4 +98,13 @@ html {
 .tabs-section--tall .tab > input:checked ~ .tab__content,
 .tabs-section--tall .content-section {
   height: 90rem;
+}
+.content-section__button-bar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #aeb0b5;
+  z-index: 1;
+  box-sizing: border-box;
+  padding: .5rem 1rem;
 }
