@@ -12,13 +12,14 @@ html {
   padding: 0;
   list-style: none;
 }
+
 .has-dropdown {
   display:inline-block;
   font-size: @font-normal;
   font-family: @font-family-sans;
   background-color: #dce4ef;
   box-sizing: border-box;
-  //border: 1px solid transparent;
+  border: 1px solid transparent;
   cursor: pointer;
   & > span {
     padding: 1rem;
@@ -45,18 +46,6 @@ html {
     position: relative;
     padding: .5rem 0;
   }
-  &:hover .dropdown {
-    display: block;
-  }
-  &:hover > span {
-    background-color: white;
-    &::after {
-      content: '';
-      border-top-width: 0;
-      border-bottom-width: .5rem;
-      border-bottom-color: @blue;
-    }
-  }
   .dropdown__item {
     padding: .5rem 1rem;
     cursor: pointer;
@@ -64,5 +53,17 @@ html {
       background-color: @blue-light;
       color: white;
     }
+  }
+}
+.has-dropdown:hover {
+  background-color: white;
+  & > span::after {
+    content: '';
+    border-top-width: 0;
+    border-bottom-width: .5rem;
+    border-bottom-color: @blue;
+  }
+  .dropdown {
+    display: block;
   }
 }

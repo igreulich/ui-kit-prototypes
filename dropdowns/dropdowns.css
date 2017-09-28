@@ -14,6 +14,7 @@ html {
   font-family: 'SourceSansPro-Regular', 'Source Sans Pro', sans-serif;
   background-color: #dce4ef;
   box-sizing: border-box;
+  border: 1px solid transparent;
   cursor: pointer;
 }
 .has-dropdown > span {
@@ -41,10 +42,15 @@ html {
   position: relative;
   padding: .5rem 0;
 }
-.has-dropdown:hover .dropdown {
-  display: block;
+.has-dropdown .dropdown__item {
+  padding: .5rem 1rem;
+  cursor: pointer;
 }
-.has-dropdown:hover > span {
+.has-dropdown .dropdown__item:hover {
+  background-color: #3e94cf;
+  color: white;
+}
+.has-dropdown:hover {
   background-color: white;
 }
 .has-dropdown:hover > span::after {
@@ -53,11 +59,6 @@ html {
   border-bottom-width: .5rem;
   border-bottom-color: #205493;
 }
-.has-dropdown .dropdown__item {
-  padding: .5rem 1rem;
-  cursor: pointer;
-}
-.has-dropdown .dropdown__item:hover {
-  background-color: #3e94cf;
-  color: white;
+.has-dropdown:hover .dropdown {
+  display: block;
 }
