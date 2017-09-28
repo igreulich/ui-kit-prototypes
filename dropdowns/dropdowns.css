@@ -16,6 +16,7 @@ html {
   box-sizing: border-box;
   border: 1px solid transparent;
   cursor: pointer;
+  position: relative;
 }
 .has-dropdown > span {
   padding: 1rem;
@@ -36,10 +37,13 @@ html {
   border-top-color: #205493;
 }
 .has-dropdown .dropdown {
-  outline: 1px solid #aeb0b5;
+  border: 1px solid #aeb0b5;
   background-color: #f1f1f1;
   display: none;
-  position: relative;
+  position: absolute;
+  top: calc(100% + 1px);
+  left: -1px;
+  width: 100%;
   padding: .5rem 0;
 }
 .has-dropdown .dropdown__item {
@@ -61,4 +65,17 @@ html {
 }
 .has-dropdown:hover .dropdown {
   display: block;
+}
+.has-dropdown--alternate {
+  background-color: #f1f1f1;
+}
+.has-dropdown--alternate:hover {
+  border-color: #3e94cf;
+  background-color: white;
+}
+.has-dropdown--alternate:hover > span {
+  color: #3e94cf;
+}
+.has-dropdown--alternate .dropdown {
+  border-color: transparent;
 }

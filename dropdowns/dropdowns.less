@@ -21,6 +21,7 @@ html {
   box-sizing: border-box;
   border: 1px solid transparent;
   cursor: pointer;
+  position: relative;
   & > span {
     padding: 1rem;
     padding-right: 3rem;
@@ -40,10 +41,13 @@ html {
     }
   }
   .dropdown {
-    outline: 1px solid #aeb0b5;
+    border: 1px solid #aeb0b5;
     background-color: #f1f1f1;
     display: none;
-    position: relative;
+    position: absolute;
+    top:calc(100% ~'+' 1px);
+    left: -1px;
+    width: 100%;
     padding: .5rem 0;
   }
   .dropdown__item {
@@ -65,5 +69,18 @@ html {
   }
   .dropdown {
     display: block;
+  }
+}
+.has-dropdown--alternate {
+  background-color: #f1f1f1;
+  &:hover {
+    border-color: @blue-light;
+    background-color: white;
+    &>span {
+      color: @blue-light;
+    }
+  }
+  .dropdown {
+    border-color: transparent;
   }
 }
