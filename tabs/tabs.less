@@ -4,12 +4,21 @@
 @tabs-section-height-short: 30rem;
 @tabs-section-height-tall: 90rem;
 
-@tab-line-height: calc(@font-normal * 1.2); //Need line height in rems for tab-height math
+
+//decimal-places should be 10, 100, 1000, etc.
+.truncate(@number, @decimal-places) {
+  @truncated: floor(@number * @decimal-places) / @decimal-places;
+}
+
+
+@tab-line-height: @font-normal * 1.2; //Need line height in rems for tab-height math
 @tab-border-width: 1px;
 @tab-arrow-width: 2rem;
 @tab-vertical-padding: .6rem;
 @tab-horizontal-padding: 1rem;
 @tab-height: calc(@tab-line-height ~"+" calc(@tab-vertical-padding * 2));
+
+
 
 html {
   font-size: 10px;
@@ -52,6 +61,8 @@ html {
       	height: 0;
         z-index: 1;
       	border-bottom: @tab-height solid @blue-light;
+        .truncate(@tab-line-height, 10);
+        border-bottom-width: calc(@truncated ~"+" calc(@tab-vertical-padding * 2));
       	border-right: @tab-arrow-width solid transparent;
       }
       &:hover {

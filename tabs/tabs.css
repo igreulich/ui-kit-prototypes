@@ -21,8 +21,8 @@ html {
   min-width: 10rem;
   color: white;
   font-family: 'SourceSansPro-Regular', 'Source Sans Pro', sans-serif;
-  font-size: 1.2rem;
-  line-height: calc(1.44rem);
+  font-size: 1.4rem;
+  line-height: 1.68rem;
   background-color: #3e94cf;
   border: 1px solid #3e94cf;
   border-bottom-width: 0;
@@ -38,7 +38,8 @@ html {
   width: 0;
   height: 0;
   z-index: 1;
-  border-bottom: calc(calc(1.44rem) + calc(1.2rem)) solid #3e94cf;
+  border-bottom: calc(1.68rem + calc(1.2rem)) solid #3e94cf;
+  border-bottom-width: calc(1.6rem + calc(1.2rem));
   border-right: 2rem solid transparent;
 }
 .tabs-section .tab > label:hover {
