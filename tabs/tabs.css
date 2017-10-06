@@ -69,6 +69,7 @@ html {
   border-bottom-width: 0;
   color: #205493;
   cursor: auto;
+  z-index: 1;
 }
 .tabs-section .tab > input:checked ~ label::after {
   content: '';
