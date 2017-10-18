@@ -1,0 +1,40 @@
+html {
+  font-size: 10px;
+}
+.collapsible-section {
+  font-family: 'SourceSansPro-Regular', 'Source Sans Pro', sans-serif;
+}
+.collapsible-section > label {
+  padding: .7rem 1rem;
+  background-color: #205493;
+  color: white;
+  font-weight: bold;
+  font-family: 'Merriweather-Bold';
+  display: block;
+  cursor: pointer;
+  font-size: 1.6rem;
+}
+.collapsible-section > label .fa-minus-square {
+  display: none;
+}
+.collapsible-section > label .fa {
+  margin-right: .5rem;
+}
+.collapsible-section > section {
+  display: none;
+  font-size: 1.4rem;
+}
+.collapsible-section .collapsible-section-handler:checked ~ section {
+  display: block;
+}
+.collapsible-section .collapsible-section-handler:checked ~ label .fa-minus-square {
+  display: inline;
+}
+.collapsible-section .collapsible-section-handler:checked ~ label .fa-plus-square {
+  display: none;
+}
+.collapsible-section .collapsible-section-handler {
+  position: absolute;
+  top: -999999px;
+  left: -99999px;
+}

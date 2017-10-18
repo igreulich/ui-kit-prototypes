@@ -1,6 +1,53 @@
+@import '_vars.less';
+html {
+  font-size: 10px;
+}
+
 .collapsible-section {
-  header {
+  font-family: @font-family-normal;
+
+  & > label {
+    padding: .7rem 1rem;
     background-color: @blue;
     color: white;
+    font-weight: bold;
+    font-family: 'Merriweather-Bold';
+    display: block;
+    cursor: pointer;
+    font-size: 1.6rem;
+
+    .fa-minus-square {
+      display: none;
+    }
+
+    .fa {
+      margin-right: .5rem;
+    }
   }
+
+  & > section {
+    display: none;
+    font-size: 1.4rem;
+  }
+
+  .collapsible-section-handler:checked {
+   & ~ section {
+    display: block;
+  }
+
+  & ~ label .fa-minus-square {
+    display: inline;
+  }
+  & ~ label .fa-plus-square {
+    display: none;
+  }
+
+}
+
+  .collapsible-section-handler {
+    position: absolute;
+    top: -999999px;
+    left: -99999px;
+  }
+
 }
