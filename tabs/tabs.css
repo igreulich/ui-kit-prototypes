@@ -61,6 +61,7 @@ html {
 .tabs-section .tab__content {
   position: absolute;
   left: 0;
+  top: calc(1.68rem + calc(1.2rem));
   display: none;
 }
 .tabs-section .tab > input:checked ~ label {
@@ -101,7 +102,7 @@ html {
 .tabs-section--tall .content-section {
   height: 90rem;
 }
-.content-section__button-bar {
+.tab__footer {
   position: absolute;
   bottom: 0;
   width: 100%;
