@@ -1,0 +1,61 @@
+html {
+  font-size: 10px;
+}
+.type-ahead__search-container {
+  display: flex;
+}
+.type-ahead__search-container .type-ahead__input,
+.type-ahead__search-container .type-ahead__arrow {
+  height: auto;
+  border-radius: .25em;
+  justify-content: center;
+  align-items: center;
+}
+.type-ahead__search-container .type-ahead__input {
+  line-height: 3.25em;
+  border: 0.1em solid #eeeeee;
+  width: 50rem;
+  outline: none;
+  text-indent: .25em;
+  font-size: 1.2rem;
+}
+.type-ahead__search-container .type-ahead__arrow {
+  display: flex;
+  width: 4em;
+  background: #4395CD;
+  margin-left: -1.6em;
+  border: .10em solid #4395CD;
+}
+.type-ahead__search-container .type-ahead__arrow i.fa.fa-angle-down {
+  color: white;
+  font-size: 2.5rem;
+}
+.type-ahead__options {
+  display: flex;
+  flex-direction: column;
+  width: 52.3rem;
+  max-height: 10em;
+  border: 0.1em solid #eeeeee;
+  overflow-y: scroll;
+  min-height: 2em;
+}
+.type-ahead__options input.type-ahead__option {
+  border: none;
+}
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+.type-ahead__arrow:hover {
+  cursor: pointer;
+  background: white;
+}
+.type-ahead__arrow:hover i.fa.fa-angle-down {
+  color: #eeeeee;
+}
+input.type-ahead__option:hover {
+  background: blue;
+  color: white;
+}
+.hidden {
+  display: none;
+}
