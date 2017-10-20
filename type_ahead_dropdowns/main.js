@@ -1,73 +1,76 @@
 /* So 4 functions: filter drop down, show dropdown, update text input, and close drop down */
 
-var body = document.getElementsByTagName('body')[0];
-var dropDownArrow = document.getElementsByClassName('type-ahead__arrow')[0];
-var dropDownInput = document.getElementsByClassName('type-ahead__input')[0];
-var optionsContainer = document.getElementsByClassName('type-ahead__options')[0];
+;(function() {
+  // Displays markup on page
+  var renderMarkUp = function(array, parent) {
+    for (let item of array) {
+      parent.appendChild(item);
+    }
+    parent.classList.add('hidden');
+  };
 
-
-var filterDropDownOptions = function() {
-  // function is firing
-  // input text is available
-  var criteria = event.target.value;
-  console.log('filterDropDownOptions', criteria);
-  // options are displayed
-  while (optionsContainer.firstChild) {
-      optionsContainer.removeChild(optionsContainer.firstChild);
-  }
-  showDropDownOptions(criteria);
-}
-
-var showDropDownOptions = function(criteria) {
-  // create all of the options for the dropdown menu
-  console.log('showDropDownOptions');
-
-  var data = ['test', 'test2', 'test3', 'test4', 'test3','test3','test3','test3','test3','test3','test3',];
-  if (criteria.length > 0) {
-    data = data.filter(function(el) {
-      return el.includes(criteria);
+  // Generates Markup to be Displayed in renderMarkUp
+  var generateMarkUp = function(array) {
+    var options = data.map(function(el, index){
+      // for some really stupid reason I cant do option elements
+      var optionElement = document.createElement('input');
+      // because option.value don't work
+      optionElement.value = el;
+      optionElement.tabIndex = -index - 1;
+      optionElement.className = 'type-ahead__option';
+      optionElement.addEventListener('click', addOptionToInput);
+      return optionElement;
     });
-  }
-  var options = data.map(function(el, index){
-    // for some really stupid reason i cant do option elements
-    var optionElement = document.createElement('input');
-    // because option.value dont work
-    optionElement.value = el;
-    optionElement.tabIndex = -index - 1;
-    optionElement.className = 'type-ahead__option';
-    optionElement.addEventListener('click', updateInput);
-    return optionElement;
-  });
-  if (optionsContainer.children.length === 0) {
-    for (let option of options) {
-      optionsContainer.appendChild(option);
+    return options;
+  };
+
+  // Shows/Hides Markup
+  var toggleDropDown = function () {
+    markup.optionsContainer.classList.toggle('hidden');
+  };
+
+  // Filters MarkUp
+  var filterDropDownOptions = function() {
+    var criteria = event.target.value;
+    var items = document.querySelectorAll('.type-ahead__option');
+    for (let item of items) {
+      if (!item.value.includes(criteria)) {
+        item.classList.add('hidden');
+      } else if (item.value.includes(criteria)){
+        item.classList.contains('hidden') ? item.classList.remove('hidden') : null;
+      }
     }
-  }
-  optionsContainer.classList.remove('hidden');
-}
+    if (document.querySelectorAll('input.hidden').length === items.length) {
+     console.log('all inputs are hidden, whole container should be hidden');
+     markup.optionsContainer.classList.add('hidden');
+   } else if (document.querySelectorAll('input.hidden').length < items.length) {
+     console.log('NOT all inputs are hidden, container should be visible');
+     markup.optionsContainer.classList.contains('hidden') ?
+       markup.optionsContainer.classList.remove('hidden') :
+       null;
+   }
+  };
 
-var updateInput = function() {
-  var options = document.querySelectorAll('.type-ahead__option');
-  var iterableOptions = Object.values(options);
-  var selectedOption = iterableOptions.filter(function(el){
-  	return el.value === event.target.value;
-  });
-  const newInputValue = selectedOption[0].value;
-  dropDownInput.value = newInputValue;
-}
+  // Adds selected option to the textInput
+  var addOptionToInput = function() {
+    console.log('addOptionToInput is firing', event.target.value);
+    var selectedInput = event.target.value;
+    markup.dropDownInput.value = selectedInput;
+    toggleDropDown();
+  };
 
-var closeOptions = function () {
-  console.log('closeOptions');
-  var dropDownInput = document.getElementsByClassName('type-ahead__input')[0];
-  var dropDownArrow = document.getElementsByClassName('type-ahead__arrow')[0];
-  if (document.activeElement !== dropDownArrow) {
-    while (optionsContainer.firstChild) {
-      optionsContainer.removeChild(optionsContainer.firstChild);
-    }
-    optionsContainer.classList.add('hidden');
-  }
-}
-
-dropDownArrow.addEventListener('click', showDropDownOptions);
-dropDownInput.addEventListener('keyup', filterDropDownOptions.bind(null, event));
-body.addEventListener('click', closeOptions);
+  // I. Getting Data for the dropdown (to be retrived via HTTP Request)
+  var data = ['test', 'test2', 'test3', 'test4', 'test3','test3','test3','test3','test3','test3','test3'];
+  // II. Making a robust object made of markup for iteration and easy reference
+  var markup = {
+    options: generateMarkUp(data),
+    body: document.getElementsByTagName('body')[0],
+    dropDownArrow: document.getElementsByClassName('type-ahead__arrow')[0],
+    dropDownInput: document.getElementsByClassName('type-ahead__input')[0],
+    optionsContainer: document.getElementsByClassName('type-ahead__options')[0]
+  };
+  // III. Actually rendering the markup
+  renderMarkUp(markup.options, markup.optionsContainer);
+  markup.dropDownArrow.addEventListener('click', toggleDropDown);
+  markup.dropDownInput.addEventListener('keyup', filterDropDownOptions);
+}());

@@ -22,7 +22,7 @@ html {
 .type-ahead__search-container .type-ahead__arrow {
   display: flex;
   width: 4em;
-  background: #4395CD;
+  background: #3e94cf;
   margin-left: -1.6em;
   border: .10em solid #4395CD;
 }
@@ -33,7 +33,7 @@ html {
 .type-ahead__options {
   display: flex;
   flex-direction: column;
-  width: 52.3rem;
+  width: 48.2rem;
   max-height: 10em;
   border: 0.1em solid #eeeeee;
   overflow-y: scroll;

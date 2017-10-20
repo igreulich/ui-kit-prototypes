@@ -11,7 +11,6 @@ html {
     border-radius: .25em;
     justify-content: center;
     align-items: center;
-    // applying font-size: @font-normal; ruins the symmetry of height
   }
   .type-ahead__input {
     line-height: 3.25em;
@@ -24,7 +23,7 @@ html {
   .type-ahead__arrow {
       display: flex;
       width: 4em;
-      background: #4395CD;
+      background: @blue-light;
       margin-left: -1.6em;
       border: .10em solid #4395CD;
       i.fa.fa-angle-down {
@@ -37,7 +36,7 @@ html {
 .type-ahead__options {
   display: flex;
   flex-direction: column;
-  width: 52.3rem;
+  width: 48.2rem;
   max-height: 10em;
   border: 0.1em solid #eeeeee;
   overflow-y: scroll;
