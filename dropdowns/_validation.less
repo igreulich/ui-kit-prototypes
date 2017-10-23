@@ -1,15 +1,27 @@
+@import '_vars.less';
+
 form {
   display: flex;
-  flex-direction: row;
-  width: 25%;
+  flex-direction: column;
   fieldset {
     border: none;
     padding: 0;
     margin: 1em 0;
+    input {
+      line-height: @font-normal + .5em;
+    }
   }
 }
 
 // Psuedo Styles can't be nested under a parent:
+
+.date-input input:invalid,
+.select-wrapper select:invalid,
+.text-input input:invalid {
+  border: 1px solid red;
+}
+
+// I. Select an Option Dropdown Validation Styles:
 
 .select:invalid {
   select {
@@ -31,4 +43,29 @@ form {
 // cause its messed up a bit due to the exclamation icon's font size:
 .select-wrapper::after {
   left: 11rem;
+}
+
+// II. Date Picker Validation Features
+
+.date-input:invalid {
+  .fa-exclamation {
+    margin-left: -1em;
+    color: red;
+    position: relative;
+    right: .8em;
+    font-size: @font-normal;
+  }
+  span.asterik:before {
+    content: '*';
+    color: red;
+    position: relative;
+    font-weight: bold;
+    font-size: 1.2rem;
+    right: 10.9em;
+    bottom: .3em;
+  }
+}
+
+.date-input input:valid ~ .fa-exclamation {
+  display: none;
 }

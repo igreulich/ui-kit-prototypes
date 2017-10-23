@@ -1,12 +1,19 @@
 form {
   display: flex;
-  flex-direction: row;
-  width: 25%;
+  flex-direction: column;
 }
 form fieldset {
   border: none;
   padding: 0;
   margin: 1em 0;
+}
+form fieldset input {
+  line-height: 1.7rem;
+}
+.date-input input:invalid,
+.select-wrapper select:invalid,
+.text-input input:invalid {
+  border: 1px solid red;
 }
 .select:invalid select {
   border: 1px solid red;
@@ -20,6 +27,25 @@ form fieldset {
 }
 .select-wrapper::after {
   left: 11rem;
+}
+.date-input:invalid .fa-exclamation {
+  margin-left: -1em;
+  color: red;
+  position: relative;
+  right: .8em;
+  font-size: 1.2rem;
+}
+.date-input:invalid span.asterik:before {
+  content: '*';
+  color: red;
+  position: relative;
+  font-weight: bold;
+  font-size: 1.2rem;
+  right: 10.9em;
+  bottom: .3em;
+}
+.date-input input:valid ~ .fa-exclamation {
+  display: none;
 }
 html {
   font-size: 10px;
@@ -125,4 +151,11 @@ html {
   border-color: #3e94cf;
   background-color: white;
   color: #3e94cf;
+}
+input.date-picker::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+input.date-picker::-webkit-datetime-edit-text {
+  color: green;
 }
