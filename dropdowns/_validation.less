@@ -1,0 +1,34 @@
+form {
+  display: flex;
+  flex-direction: row;
+  width: 25%;
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 1em 0;
+  }
+}
+
+// Psuedo Styles can't be nested under a parent:
+
+.select:invalid {
+  select {
+    border: 1px solid red;
+  }
+  .fa-exclamation {
+    color: red;
+    font-size: @font-normal + .5em;
+  }
+}
+
+.select:valid {
+  .fa-exclamation {
+    display: none;
+  }
+}
+
+// overriding the styles on dropdowns.less for the select arrow
+// cause its messed up a bit due to the exclamation icon's font size:
+.select-wrapper::after {
+  left: 11rem;
+}

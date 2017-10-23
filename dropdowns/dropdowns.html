@@ -1,6 +1,7 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="dropdowns.css" />
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 <body>
   <li class="has-dropdown">
@@ -14,15 +15,21 @@
     </ul>
   </li>
 
-  <span class="select-wrapper">
-    <select>
-      <option class="select__title" disabled selected>Select an option</option>
-      <option>Option 1</option>
-      <option>Option 2</option>
-      <option>Option 3</option>
-      <option>Option 4</option>
-      <option>Option 5</option>
-    </select>
-  </span>
+<form action="">
+  <fieldset class="select">
+    <span class="select-wrapper">
+      <select required>
+        <option class="select__title" value="" disabled selected>Select an option</option>
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+        <option>Option 4</option>
+        <option>Option 5</option>
+      </select>
+      <i class="fa fa-exclamation" aria-hidden="true"></i>
+    </span>
+  </fieldset>
+</form>
+
 </body>
 </html>

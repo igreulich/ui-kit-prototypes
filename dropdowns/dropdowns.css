@@ -1,3 +1,26 @@
+form {
+  display: flex;
+  flex-direction: row;
+  width: 25%;
+}
+form fieldset {
+  border: none;
+  padding: 0;
+  margin: 1em 0;
+}
+.select:invalid select {
+  border: 1px solid red;
+}
+.select:invalid .fa-exclamation {
+  color: red;
+  font-size: 1.7rem;
+}
+.select:valid .fa-exclamation {
+  display: none;
+}
+.select-wrapper::after {
+  left: 11rem;
+}
 html {
   font-size: 10px;
 }
