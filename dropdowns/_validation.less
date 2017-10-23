@@ -3,6 +3,7 @@
 form {
   display: flex;
   flex-direction: column;
+  margin-left: 5px;
   fieldset {
     border: none;
     padding: 0;
@@ -17,7 +18,8 @@ form {
 
 .date-input input:invalid,
 .select-wrapper select:invalid,
-.text-input input:invalid {
+.text-input input:invalid,
+.type-ahead input:invalid {
   border: 1px solid red;
 }
 
@@ -68,4 +70,65 @@ form {
 
 .date-input input:valid ~ .fa-exclamation {
   display: none;
+}
+
+// III. Text Input Validation
+
+.text-input:invalid {
+  label {
+    color: red;
+  }
+  .fa-exclamation {
+    color: red;
+    position: relative;
+    right: .75em;
+    font-size: 1.2rem;
+  }
+  .asterik::before {
+    content: '*';
+    color: red;
+    position: relative;
+    font-weight: bold;
+    font-size: 1.2rem;
+    right: 10.9em;
+    bottom: 1.3em;
+  }
+}
+
+.text-input:valid {
+  .fa-exclamation {
+    display: none;
+  }
+}
+
+// IV. Type-Ahead Validation
+
+.type-ahead {
+  &:invalid {
+    label {
+      color: red;
+    }
+    .fa-exclamation {
+      color: red;
+      position: relative;
+      font-size: 3em;
+      left: .25em;
+      display: flex;
+      align-self: center;
+    }
+    .asterik::before {
+      content: '*';
+      color: red;
+      position: relative;
+      font-weight: bold;
+      font-size: 1.2rem;
+      right: 42.25em;
+      bottom: 1.1em;
+    }
+  }
+  &:valid {
+  .fa-exclamation {
+    display: none;
+    }
+  }
 }

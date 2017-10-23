@@ -1,5 +1,6 @@
 @import '_vars.less';
 @import '_validation.less';
+@import '_typeahead.less';
 
 html {
   font-size: 10px;
@@ -110,15 +111,11 @@ html {
   }
 }
 
-// styling new elements:
-
-// I. Date Picker:
-
-input.date-picker::-webkit-calendar-picker-indicator {
-  display: none;
-  -webkit-appearance: none;
+.text-input {
+  label {
+    width: 100%;
+    display: flex;
+  }
 }
 
-input.date-picker::-webkit-datetime-edit-text {
-  color: green;
-}
+//

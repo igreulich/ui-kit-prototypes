@@ -35,8 +35,26 @@
     <span class="asterik"></span>
     <i class="fa fa-exclamation" aria-hidden="true"></i>
     <i class="fa fa-calendar" aria-hidden="true"></i>
-  </filedset>
+  </fieldset>
+  <fieldset class="text-input">
+    <label for="">Text Input Label:</label>
+    <input type="text" name="" value="" required>
+    <span class="asterik"></span>
+    <i class="fa fa-exclamation" aria-hidden="true"></i>
+  </fieldset>
+  <fieldset class="type-ahead">
+    <label for="">Drop Down Label:</label>
+    <div class="type-ahead__search-container">
+      <input tabindex="0"list="type-ahead__datalist" type="text" class="type-ahead__input" placeholder="" required>
+      <span class="asterik"></span>
+      <button href="" class="type-ahead__arrow">
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
+      </button>
+      <i class="fa fa-exclamation" aria-hidden="true"></i>
+    </div>
+    <div class="type-ahead__options hidden"></div>
+  </fieldset>
 </form>
-
+<script src="main.js"></script>
 </body>
 </html>
