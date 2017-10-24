@@ -19,7 +19,7 @@ html {
   padding: 0.6rem 1rem;
   box-sizing: border-box;
   min-width: 10rem;
-  color: white;
+  color: #fff;
   font-family: 'SourceSansPro-Regular', 'Source Sans Pro', sans-serif;
   font-size: 1.4rem;
   line-height: 1.68rem;
@@ -65,7 +65,7 @@ html {
   display: none;
 }
 .tabs-section .tab > input:checked ~ label {
-  background-color: white;
+  background-color: #fff;
   border: 1px solid #205493;
   border-bottom-width: 0;
   color: #205493;
@@ -75,7 +75,7 @@ html {
 .tabs-section .tab > input:checked ~ label::after {
   content: '';
   right: calc(-2rem + 1px);
-  border-bottom-color: white;
+  border-bottom-color: #fff;
 }
 .tabs-section .tab > input:checked ~ label::before {
   content: '';
@@ -85,7 +85,6 @@ html {
   display: block;
   height: 60rem;
   width: 100%;
-  padding: 1rem;
   overflow: auto;
   box-sizing: border-box;
 }
@@ -102,7 +101,7 @@ html {
 .tabs-section--tall .content-section {
   height: 90rem;
 }
-.tab__footer {
+.content-section__button-bar {
   position: absolute;
   bottom: 0;
   width: 100%;
