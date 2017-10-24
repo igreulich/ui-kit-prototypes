@@ -113,37 +113,51 @@ html {
 }
 
 // new drop down styles for newly added drop downs:
-
-.text-input {
-  label {
-    width: 100%;
-    display: flex;
-  }
-}
-
-.radio-buttons {
+form {
   display: flex;
-  width: 50%;
-  .radio-buttons__container {
-    margin-top: 1em;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 33%;
-    margin-left: 1em;
-    padding: 1em;
-    border-radius: .75em;
+  flex-direction: column;
+  margin-left: 5px;
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 1em 0;
+    input {
+      line-height: @font-normal + .5em;
+      border: 0.1em solid #eeeeee;
+      height: 2em;
+      border-radius: .25em
+    }
+  }
+  .text-input {
     label {
-      width: 80%;
-      max-width: 85%;
-    }
-    label:first-of-type {
       width: 100%;
-      margin: 0 1em .5em 0;
+      display: flex;
     }
-    input[type="radio"] {
-      margin-left: 1.25em;
+  }
+  .radio-buttons {
+    display: flex;
+    width: 50%;
+    .radio-buttons__container {
+      margin-top: 1em;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+      width: 33%;
+      margin-left: 1em;
+      padding: 1em;
+      border-radius: .75em;
+      label {
+        width: 80%;
+        max-width: 85%;
+      }
+      label:first-of-type {
+        width: 100%;
+        margin: 0 1em .5em 0;
+      }
+      input[type="radio"] {
+        margin-left: 1.25em;
+      }
     }
   }
 }
