@@ -1,0 +1,158 @@
+/*  UI/UX Pagination Prototype Styles */
+* {
+	font-family: Helvetica, Arial, sans-serif;
+}
+.pagination {
+	text-align: center;
+	margin-left: 0;
+	margin-top: 0.125rem;
+	margin-bottom: 0rem;
+	&::before {
+		display: table;
+		content: ' ';
+	}
+	&::after {
+		display: table;
+		content: ' ';
+		clear: both;
+	}
+	li {
+		margin-right: 0.0625rem;
+		border-radius: 100%;
+		font-size: 0.875rem;
+		display: none;
+		&:last-child {
+			display: inline-block;
+		}
+		&:first-child {
+			display: inline-block;
+		}
+	}
+	a {
+		display: block;
+		padding: 0.1875rem 0.625rem;
+		border-radius: 50%;
+		text-decoration: none;
+		border: none;
+		color: #323a45;
+		&:hover {
+			font-weight: 700;
+			color: #323a45;
+			text-decoration: none;
+			padding: 0.1875rem 0.625rem;
+		}
+	}
+	button {
+		display: block;
+		padding: 0.1875rem 0.625rem;
+		border-radius: 50%;
+		text-decoration: none;
+		border: none;
+		color: #333333;
+		&:hover {
+			font-weight: 700;
+			color: #333333;
+			text-decoration: none;
+			padding: 0.1875rem 0.625rem;
+		}
+	}
+	.current {
+		padding: 0.1875rem 0.625rem;
+		color: #888888;
+		border: .125rem solid #FDB81E;
+		cursor: default;
+	}
+	.disabled {
+		padding: 0.1875rem 0.625rem;
+		color: #cacaca;
+		cursor: not-allowed;
+		&:hover {
+			background: transparent;
+		}
+	}
+	.ellipsis {
+		&::after {
+			padding: 0.1875rem 0.625rem;
+			content: '\2026';
+			color: #323a45;
+		}
+	}
+}
+.pagination-first {
+	a {
+		&::before {
+			display: inline-block;
+			margin-right: 0.5rem;
+			content: '\00ab';
+		}
+	}
+}
+.pagination-first.disabled {
+	&::before {
+		display: inline-block;
+		margin-right: 0.5rem;
+		content: '\00ab';
+	}
+}
+.pagination-previous {
+	a {
+		&::before {
+			display: inline-block;
+			margin-right: 0.5rem;
+			content: '\2039';
+		}
+	}
+}
+.pagination-previous.disabled {
+	&::before {
+		display: inline-block;
+		margin-right: 0.5rem;
+		content: '\2039';
+	}
+}
+.pagination-next {
+	a {
+		&::after {
+			display: inline-block;
+			margin-left: 0.5rem;
+			content: '\203A';
+		}
+	}
+}
+.pagination-next.disabled {
+	&::after {
+		display: inline-block;
+		margin-left: 0.5rem;
+		content: '\203A';
+	}
+}
+.pagination-last {
+	a {
+		&::after {
+			display: inline-block;
+			margin-left: 0.5rem;
+			content: '\00bb';
+		}
+	}
+}
+.pagination-last.disabled {
+	&::after {
+		display: inline-block;
+		margin-left: 0.5rem;
+		content: '\00bb';
+	}
+}
+@media print {
+	.pagination {
+		li {
+			display: inline-block;
+		}
+	}
+}
+@media screen and (min-width: 40em) {
+	.pagination {
+		li {
+			display: inline-block;
+		}
+	}
+}

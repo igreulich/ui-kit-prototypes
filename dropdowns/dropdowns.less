@@ -1,0 +1,110 @@
+@import '_vars.less';
+
+html {
+  font-size: 10px;
+}
+
+//resetting list styles on all dropdown elements
+.has-dropdown,
+.dropdown,
+.dropdown__item {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.has-dropdown {
+  display:inline-block;
+  font-size: @font-normal;
+  font-family: @font-family-sans;
+  background-color: #dce4ef;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+  & > span {
+    padding: 1rem;
+    padding-right: 3rem;
+    display:inline-block;
+    position: relative;
+    color: @blue;
+    &::after {
+      content: '';
+      height: 0;
+      width: 0;
+      position: absolute;
+      right: 1rem;
+      top: calc(50% ~'-' .25rem);
+      border: .5rem solid transparent;
+      border-bottom-width: 0;
+      border-top-color: @blue;
+    }
+  }
+  .dropdown {
+    background-color: #f1f1f1;
+    display: none;
+    position: absolute;
+    width: 100%;
+    padding: .5rem 0;
+  }
+  .dropdown__item {
+    padding: .5rem 1rem;
+    cursor: pointer;
+    &:hover {
+      background-color: @blue-light;
+      color: white;
+    }
+  }
+}
+.has-dropdown:hover {
+  background-color: #f1f1f1;
+  & > span::after {
+    content: '';
+    border-top-width: 0;
+    border-bottom-width: .5rem;
+    border-bottom-color: @blue;
+  }
+  .dropdown {
+    display: block;
+  }
+}
+.select-wrapper {
+  display: inline-block;
+  position: relative;
+  select {
+    outline: 0;
+    padding: 1rem;
+    padding-right: 3rem;
+    border-radius: 3px;
+    font-size: @font-normal;
+    font-family: @font-family-sans;
+    color: @blue;
+    cursor: pointer;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    &::-ms-expand {
+      display: none;
+    }
+  }
+  .select__title:disabled {
+    display: none;
+  }
+  &::after {
+    content: '';
+    height: 0;
+    width: 0;
+    position: absolute;
+    right: 1rem;
+    top: calc(50% ~'-' .25rem);
+    border: .5rem solid transparent;
+    border-bottom-width: 0;
+    border-top-color: @blue;
+  }
+  &:hover select {
+     border-color: @blue-light;
+     background-color: white;
+     color: @blue-light;
+  }
+}

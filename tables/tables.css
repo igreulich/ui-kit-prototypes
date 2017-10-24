@@ -34,16 +34,35 @@ table {
   table tbody th,
   table tbody td {
 	padding: 0.5rem 0.625rem 0.625rem; }
-  table.stripes tbody tr:nth-child(even) {
-	border-bottom: 0;
-	background-color: #f1f1f1; }
-  table.nostripes tbody {
-	background-color: #fefefe; }
-	table.nostripes tbody tr {
-	  border-bottom: 0;
-	  border-bottom: 1px solid #f1f1f1;
-	  background-color: #fefefe; }
 
+tr.even, tr.even + tr.min {
+	background-color: #f1f1f1;
+}
+	 
+tr.accordion {
+    cursor: pointer;
+    text-align: left;
+    outline: none;
+    transition: 0.4s;
+}
+tr.accordion:before {
+    content: '\002B';
+    color: #fff;
+	background-color: #205493;
+    font-weight: bold;
+    float: left;
+	padding: 2px 5px;
+    margin: 5px;
+	border-radius: 3px;
+}
+tr.accordion.active:before {
+    content: "\2212";
+}
+tr.panel {
+    padding: 0 18px;
+    display: none;
+}
+	 
 table.scroll {
   display: block;
   width: 100%;
@@ -83,6 +102,11 @@ table.minimal td,.table.minimal th{
   border-top:0.125rem solid #e9ecef;}
 table.minimal tbody+tbody{
   border-top:2px solid #e9ecef;}
+/* specific to expandable rows tr.minimal */
+  tr.min {
+  vertical-align:top;
+
+  border-bottom:0.125rem solid #ddd;}
   
 table tfoot .pagination {
   text-align: center;
@@ -114,9 +138,10 @@ table tfoot .pagination {
 	color: #dddddd; }
 	table tfoot .pagination a:hover,
 	table tfoot .pagination button:hover {
-	  font-weight: 800;
+	  font-weight: 700;
 	  color: #fff;
-	  text-decoration: none;}
+	  text-decoration: none;
+	  padding: 0.1875rem 0.625rem}
   table tfoot .pagination .current {
 	padding: 0.1875rem 0.625rem;
 	color: #dddddd;
