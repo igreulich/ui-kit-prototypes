@@ -3,6 +3,11 @@
 html {
   font-size: 10px;
 }
+
+form input {
+  height: 2em;
+}
+
 .type-ahead__search-container {
   display: flex;
   .type-ahead__input,
@@ -22,14 +27,18 @@ html {
   }
   .type-ahead__arrow {
       display: flex;
-      width: auto;
+      width: 2em;
+      height: 2em;
       background: @blue-light;
-      margin-left: -1.6em;
+      margin-left: -2em;
       border: .10em solid #4395CD;
       i.fa.fa-angle-down {
-      color: white;
-      font-size: 2.5rem;
+        color: white;
+        font-size: @font-normal + .5rem;
     }
+  }
+  .type-ahead span.notification {
+    display: flex;
   }
 }
 

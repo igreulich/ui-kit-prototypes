@@ -18,9 +18,10 @@ form fieldset input {
   border: 1px solid red;
   width: 100%;
   opacity: 0;
-  padding: .1em .25em;
+  padding: .25em .25em;
+  border-radius: .25em;
   font-size: 1.2rem;
-  background: lightblue;
+  background: #f9dede;
   margin-left: .25em;
 }
 .notification .fa-exclamation:hover::after {
@@ -127,6 +128,9 @@ form fieldset input {
 html {
   font-size: 10px;
 }
+form input {
+  height: 2em;
+}
 .type-ahead__search-container {
   display: flex;
 }
@@ -146,14 +150,18 @@ html {
 }
 .type-ahead__search-container .type-ahead__arrow {
   display: flex;
-  width: auto;
+  width: 2em;
+  height: 2em;
   background: #3e94cf;
-  margin-left: -1.6em;
+  margin-left: -2em;
   border: .10em solid #4395CD;
 }
 .type-ahead__search-container .type-ahead__arrow i.fa.fa-angle-down {
   color: white;
-  font-size: 2.5rem;
+  font-size: 1.7rem;
+}
+.type-ahead__search-container .type-ahead span.notification {
+  display: flex;
 }
 .type-ahead__options {
   display: flex;
@@ -227,6 +235,7 @@ html {
   position: absolute;
   width: 100%;
   padding: .5rem 0;
+  z-index: 999999;
 }
 .has-dropdown .dropdown__item {
   padding: .5rem 1rem;
