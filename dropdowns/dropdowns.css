@@ -11,6 +11,24 @@ form fieldset {
 form fieldset input {
   line-height: 1.7rem;
 }
+.notification .fa-exclamation::after {
+  content: "This field is required.";
+  position: relative;
+  bottom: 0em;
+  border: 1px solid red;
+  width: 100%;
+  opacity: 0;
+  padding: .1em .25em;
+  font-size: 1.2rem;
+  background: lightblue;
+  margin-left: .25em;
+}
+.notification .fa-exclamation:hover::after {
+  opacity: 1;
+}
+.notification .fa-exclamation {
+  cursor: pointer;
+}
 .date-input input:invalid,
 .select-wrapper select:invalid,
 .text-input input:invalid,
@@ -30,23 +48,26 @@ form fieldset input {
 .select-wrapper::after {
   left: 11rem;
 }
-.date-input:invalid .fa-exclamation {
-  margin-left: -1em;
+.date-input:invalid::before {
+  content: "*";
   color: red;
-  position: relative;
-  right: .8em;
-  font-size: 1.2rem;
-}
-.date-input:invalid span.asterik:before {
-  content: '*';
-  color: red;
-  position: relative;
   font-weight: bold;
-  font-size: 1.2rem;
-  right: 10.9em;
-  bottom: .3em;
+  margin-right: .25em;
+  position: relative;
+  bottom: .5em;
+  left: .25em;
 }
-.date-input input:valid ~ .fa-exclamation {
+.date-input:invalid .fa-exclamation {
+  color: red;
+  font-size: 1.2rem;
+}
+.date-input:invalid .fa-exclamation::after {
+  content: "Invalid date entered. Format MM/DD/YYY";
+}
+.date-input:invalid .fa-calendar {
+  font-size: 1.2rem;
+}
+.date-input:valid .fa-exclamation {
   display: none;
 }
 .text-input:invalid label {
@@ -55,17 +76,13 @@ form fieldset input {
 .text-input:invalid .fa-exclamation {
   color: red;
   position: relative;
-  right: .75em;
   font-size: 1.2rem;
 }
-.text-input:invalid .asterik::before {
-  content: '*';
+.text-input:invalid label::before {
+  content: "*";
   color: red;
-  position: relative;
   font-weight: bold;
-  font-size: 1.2rem;
-  right: 10.9em;
-  bottom: 1.3em;
+  margin-right: .25em;
 }
 .text-input:valid .fa-exclamation {
   display: none;
@@ -81,17 +98,31 @@ form fieldset input {
   display: flex;
   align-self: center;
 }
-.type-ahead:invalid .asterik::before {
-  content: '*';
+.type-ahead:invalid label::before {
+  content: "*";
   color: red;
-  position: relative;
   font-weight: bold;
-  font-size: 1.2rem;
-  right: 42.25em;
-  bottom: 1.1em;
+  margin-right: .25em;
 }
 .type-ahead:valid .fa-exclamation {
   display: none;
+}
+.radio-buttons:invalid::after {
+  content: "This field is required";
+  margin: .5em 0 0 1em;
+  color: red;
+}
+.radio-buttons:invalid .radio-buttons__container {
+  border: 1px dashed red;
+}
+.radio-buttons:invalid .radio-buttons__container label:first-of-type::before {
+  content: "*";
+  color: red;
+  font-weight: bold;
+  margin-right: .25em;
+}
+.radio-buttons:invalid input {
+  padding: .25em;
 }
 html {
   font-size: 10px;
@@ -101,13 +132,12 @@ html {
 }
 .type-ahead__search-container .type-ahead__input,
 .type-ahead__search-container .type-ahead__arrow {
-  height: auto;
   border-radius: .25em;
   justify-content: center;
   align-items: center;
+  font-size: 1.2rem;
 }
 .type-ahead__search-container .type-ahead__input {
-  line-height: 3.25em;
   border: 0.1em solid #eeeeee;
   width: 50rem;
   outline: none;
@@ -116,7 +146,7 @@ html {
 }
 .type-ahead__search-container .type-ahead__arrow {
   display: flex;
-  width: 4em;
+  width: auto;
   background: #3e94cf;
   margin-left: -1.6em;
   border: .10em solid #4395CD;
@@ -262,4 +292,30 @@ html {
 .text-input label {
   width: 100%;
   display: flex;
+}
+.radio-buttons {
+  display: flex;
+  width: 50%;
+}
+.radio-buttons .radio-buttons__container {
+  margin-top: 1em;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 33%;
+  margin-left: 1em;
+  padding: 1em;
+  border-radius: .75em;
+}
+.radio-buttons .radio-buttons__container label {
+  width: 80%;
+  max-width: 85%;
+}
+.radio-buttons .radio-buttons__container label:first-of-type {
+  width: 100%;
+  margin: 0 1em .5em 0;
+}
+.radio-buttons .radio-buttons__container input[type="radio"] {
+  margin-left: 1.25em;
 }
