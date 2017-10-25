@@ -5,7 +5,7 @@
 @button-arrow-width: .9rem;
 @button-vertical-padding: .6rem;
 @button-horizontal-padding: 2.8rem;
-@button-height: calc(@line-height-normal ~"+" calc(@button-vertical-padding * 2) ~"+" calc(@button-border-width * 2));
+@button-height: calc(@button-line-height ~"+" calc(@button-vertical-padding * 2) ~"+" calc(@button-border-width * 2));
 
 
 html {
@@ -67,7 +67,11 @@ html {
     top: -@button-border-width;
     border-style: solid;
     border-color: transparent transparent transparent @blue;
-    border-width: calc(@button-height ~"/" 2) 0 calc(@button-height ~"/" 2) @button-arrow-width;
+    .truncate(@button-line-height, 10);
+    border-top-width: calc(calc(@truncate ~"+" calc(@button-vertical-padding * 2) ~"+" calc(@button-border-width * 2)) ~"/" 2);
+    border-right-width: 0;
+    border-bottom-width: calc(calc(@truncate ~"+" calc(@button-vertical-padding * 2) ~"+" calc(@button-border-width * 2)) ~"/" 2);
+    border-left-width: @button-arrow-width;
   }
   &.button--secondary:after,
   &.button--secondary:before {
@@ -92,7 +96,11 @@ html {
     top: -@button-border-width;
     border-style: solid;
     border-color: transparent @blue transparent transparent;
-    border-width: calc(@button-height ~"/" 2) @button-arrow-width calc(@button-height ~"/" 2) 0;
+    .truncate(@button-line-height, 10);
+    border-top-width: calc(calc(@truncate ~"+" calc(@button-vertical-padding * 2) ~"+" calc(@button-border-width * 2)) ~"/" 2);
+    border-right-width: @button-arrow-width;
+    border-bottom-width: calc(calc(@truncate ~"+" calc(@button-vertical-padding * 2) ~"+" calc(@button-border-width * 2)) ~"/" 2);
+    border-left-width: 0;
   }
   &.button--secondary:after,
   &.button--secondary:before {
