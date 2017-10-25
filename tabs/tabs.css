@@ -19,10 +19,10 @@ html {
   padding: 0.6rem 1rem;
   box-sizing: border-box;
   min-width: 10rem;
-  color: white;
+  color: #fff;
   font-family: 'SourceSansPro-Regular', 'Source Sans Pro', sans-serif;
-  font-size: 1.2rem;
-  line-height: calc(1.44rem);
+  font-size: 1.4rem;
+  line-height: 1.68rem;
   background-color: #3e94cf;
   border: 1px solid #3e94cf;
   border-bottom-width: 0;
@@ -38,7 +38,8 @@ html {
   width: 0;
   height: 0;
   z-index: 1;
-  border-bottom: calc(calc(1.44rem) + calc(1.2rem)) solid #3e94cf;
+  border-bottom: calc(1.68rem + calc(1.2rem)) solid #3e94cf;
+  border-bottom-width: calc(1.6rem + calc(1.2rem));
   border-right: 2rem solid transparent;
 }
 .tabs-section .tab > label:hover {
@@ -60,19 +61,21 @@ html {
 .tabs-section .tab__content {
   position: absolute;
   left: 0;
+  top: calc(1.68rem + calc(1.2rem));
   display: none;
 }
 .tabs-section .tab > input:checked ~ label {
-  background-color: white;
+  background-color: #fff;
   border: 1px solid #205493;
   border-bottom-width: 0;
   color: #205493;
   cursor: auto;
+  z-index: 1;
 }
 .tabs-section .tab > input:checked ~ label::after {
   content: '';
   right: calc(-2rem + 1px);
-  border-bottom-color: white;
+  border-bottom-color: #fff;
 }
 .tabs-section .tab > input:checked ~ label::before {
   content: '';
@@ -82,7 +85,6 @@ html {
   display: block;
   height: 60rem;
   width: 100%;
-  padding: 1rem;
   overflow: auto;
   box-sizing: border-box;
 }
