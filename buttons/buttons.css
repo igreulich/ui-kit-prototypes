@@ -5,8 +5,8 @@ html {
   display: inline-block;
   font-weight: 400;
   font-family: 'SourceSansPro-Regular', 'Source Sans Pro', sans-serif;
-  font-size: 1.2rem;
-  line-height: calc(1.44rem);
+  font-size: 1.4rem;
+  line-height: 1.2;
   outline: none;
   border: 1px solid transparent;
   padding: 0.6rem 2.8rem;
@@ -57,7 +57,10 @@ html {
   top: -1px;
   border-style: solid;
   border-color: transparent transparent transparent #205493;
-  border-width: calc(calc(calc(1.44rem) + calc(1.2rem) + calc(2px)) / 2) 0 calc(calc(calc(1.44rem) + calc(1.2rem) + calc(2px)) / 2) 0.9rem;
+  border-top-width: calc(calc(1.6rem + calc(1.2rem) + calc(2px)) / 2);
+  border-right-width: 0;
+  border-bottom-width: calc(calc(1.6rem + calc(1.2rem) + calc(2px)) / 2);
+  border-left-width: 0.9rem;
 }
 .button--forward.button--secondary:after,
 .button--forward.button--secondary:before {
@@ -82,7 +85,10 @@ html {
   top: -1px;
   border-style: solid;
   border-color: transparent #205493 transparent transparent;
-  border-width: calc(calc(calc(1.44rem) + calc(1.2rem) + calc(2px)) / 2) 0.9rem calc(calc(calc(1.44rem) + calc(1.2rem) + calc(2px)) / 2) 0;
+  border-top-width: calc(calc(1.6rem + calc(1.2rem) + calc(2px)) / 2);
+  border-right-width: 0.9rem;
+  border-bottom-width: calc(calc(1.6rem + calc(1.2rem) + calc(2px)) / 2);
+  border-left-width: 0;
 }
 .button--back.button--secondary:after,
 .button--back.button--secondary:before {
