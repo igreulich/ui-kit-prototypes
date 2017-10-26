@@ -1,0 +1,80 @@
+@import '_vars.less';
+
+html {
+  font-size: 10px;
+}
+
+.typeahead__container {
+  display: flex;
+  flex-direction: column;
+  .typeahead__label {
+    display: flex;
+    font-size: 1.5rem;
+    margin: .5rem 0;
+  }
+  .typeahead__input-container {
+    display: flex;
+    .typeahead__input,
+    .typeahead__arrow {
+      height: auto;
+      border-radius: .25rem;
+      justify-content: center;
+      align-items: center;
+    }
+    .typeahead__input {
+      line-height: 3.25rem;
+      border: .10rem solid rgb(238, 238, 238);
+      width: 50rem;
+      outline: none;
+      text-indent: .25rem;
+      font-size: @font-normal;
+    }
+    .typeahead__arrow {
+        display: flex;
+        width: 4rem;
+        background: @blue-light;
+        margin-left: -1.6rem;
+        border: .10rem solid #4395CD;
+        i.fa.fa-angle-down {
+          color: white;
+          font-size: 2.5rem;
+        }
+    }
+  }
+}
+
+.typeahead__options {
+  display: flex;
+  flex-direction: column;
+  width: 48.2rem;
+  max-height: 10rem;
+  border: 0.1rem solid #eeeeee;
+  overflow-y: scroll;
+  min-height: 2rem;
+  .typeahead__option {
+    border: none;
+  }
+}
+
+//pseudo styles
+
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.typeahead__arrow:hover {
+  cursor: pointer;
+  background: white;
+  i.fa.fa-angle-down {
+    color: rgb(238, 238, 238);
+  }
+}
+
+.typeahead__option:hover {
+    background: blue;
+    color: white;
+}
+
+.hidden {
+  display: none;
+}
