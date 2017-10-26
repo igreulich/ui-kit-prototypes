@@ -1,11 +1,18 @@
 @import '_vars.less';
 
+@verror-arrow-width: @arrow-width;
+@verror-vertical-padding: .6rem;
+@verror-horizontal-padding: 2rem;
+@verror-border-width: 1px;
+@verror-line-height: @line-height-normal * @font-normal; //put line height in units for calc functions
+@verror-height: calc(@verror-line-height ~"+" calc(@verror-vertical-padding * 2) ~"+" calc(@verror-border-width * 2));
+
 .notification {
   .fa-exclamation::after {
     content: "This field is required.";
     position: relative;
     bottom: 0em;
-    border: 1px solid red;
+    border: 1px solid @red;
     width: 100%;
     opacity: 0;
     padding: .25em .25em;
@@ -30,17 +37,17 @@
 .select-wrapper select:invalid,
 .text-input input:invalid,
 .type-ahead input:invalid {
-  border: 1px solid red;
+  border: 1px solid @red;
 }
 
 // I. Select an Option Dropdown Validation Styles:
 
 .select:invalid {
   select {
-    border: 1px solid red;
+    border: 1px solid @red;
   }
   .fa-exclamation {
-    color: red;
+    color: @red;
     font-size: @font-normal + .5em;
   }
 }
@@ -62,7 +69,7 @@
 .date-input:invalid {
   &::before {
     content: "*";
-    color: red;
+    color: @red;
     font-weight: bold;
     margin-right: .25em;
     position: relative;
@@ -70,7 +77,7 @@
     left: .25em;
   }
   .fa-exclamation {
-    color: red;
+    color: @red;
     font-size: @font-normal;
     &::after {
       content: "Invalid date entered. Format MM/DD/YYY";
@@ -91,16 +98,16 @@
 
 .text-input:invalid {
   label {
-    color: red;
+    color: @red;
   }
   .fa-exclamation {
-    color: red;
+    color: @red;
     position: relative;
     font-size: 1.2rem;
   }
   label::before {
     content: "*";
-    color: red;
+    color: @red;
     font-weight: bold;
     margin-right: .25em;
   }
@@ -117,10 +124,10 @@
 .type-ahead {
   &:invalid {
     label {
-      color: red;
+      color: @red;
     }
     .fa-exclamation {
-      color: red;
+      color: @red;
       position: relative;
       font-size: 3em;
       left: .25em;
@@ -129,7 +136,7 @@
     }
     label::before {
       content: "*";
-      color: red;
+      color: @red;
       font-weight: bold;
       margin-right: .25em;
     }
@@ -147,15 +154,15 @@
   &:invalid::after {
     content: "This field is required";
     margin: .5em 0 0 1em;
-    color: red;
+    color: @red;
   }
   &:invalid {
     .radio-buttons__container {
-      border: 1px dashed red;
+      border: 1px dashed @red;
     }
     .radio-buttons__container label:first-of-type::before {
       content: "*";
-      color: red;
+      color: @red;
       font-weight: bold;
       margin-right: .25em;
     }
@@ -165,4 +172,53 @@
   }
 }
 
-// ToolTips:
+// ------------------ New Styles
+.validation-error {
+  display: none;
+  color: @red;
+  cursor: pointer;
+  border: none;
+  font-size: @font-normal;
+  background-color: transparent;
+  line-height: @line-height-normal;
+  padding: 0;
+  &:focus .validation-error__message,
+  &:hover .validation-error__message {
+    display: inline-block;
+  }
+  .fa {
+    padding: @verror-vertical-padding .5rem;
+  }
+}
+select:invalid + .validation-error {
+  display: inline-block;
+}
+.validation-error__message {
+  display: none;
+  border: @verror-border-width solid @red;
+  border-radius: 0 3px 3px 0;
+  margin-left: @verror-arrow-width;
+  padding: @verror-vertical-padding @verror-horizontal-padding;
+  background-color: @red-light;
+  position: relative;
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    left: calc(-@verror-arrow-width ~"-" @verror-border-width);
+    top: -@verror-border-width;
+    border-style: solid;
+    border-color: transparent @red transparent transparent;
+    .truncate(@verror-line-height, 10);
+    border-top-width: calc(calc(@truncate ~"+" calc(@verror-vertical-padding * 2) ~"+" calc(@verror-border-width * 2)) ~"/" 2);
+    border-right-width: @verror-arrow-width;
+    border-bottom-width: calc(calc(@truncate ~"+" calc(@verror-vertical-padding * 2) ~"+" calc(@verror-border-width * 2)) ~"/" 2);
+    border-left-width: 0;
+  }
+  &:after {
+    content: '';
+    border-right-color: @red-light;
+    left: -@verror-arrow-width;
+  }
+}

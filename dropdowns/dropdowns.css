@@ -2,7 +2,7 @@
   content: "This field is required.";
   position: relative;
   bottom: 0em;
-  border: 1px solid red;
+  border: 1px solid #e31c3d;
   width: 100%;
   opacity: 0;
   padding: .25em .25em;
@@ -21,13 +21,13 @@
 .select-wrapper select:invalid,
 .text-input input:invalid,
 .type-ahead input:invalid {
-  border: 1px solid red;
+  border: 1px solid #e31c3d;
 }
 .select:invalid select {
-  border: 1px solid red;
+  border: 1px solid #e31c3d;
 }
 .select:invalid .fa-exclamation {
-  color: red;
+  color: #e31c3d;
   font-size: 1.7rem;
 }
 .select:valid .fa-exclamation {
@@ -38,7 +38,7 @@
 }
 .date-input:invalid::before {
   content: "*";
-  color: red;
+  color: #e31c3d;
   font-weight: bold;
   margin-right: .25em;
   position: relative;
@@ -46,7 +46,7 @@
   left: .25em;
 }
 .date-input:invalid .fa-exclamation {
-  color: red;
+  color: #e31c3d;
   font-size: 1.2rem;
 }
 .date-input:invalid .fa-exclamation::after {
@@ -59,16 +59,16 @@
   display: none;
 }
 .text-input:invalid label {
-  color: red;
+  color: #e31c3d;
 }
 .text-input:invalid .fa-exclamation {
-  color: red;
+  color: #e31c3d;
   position: relative;
   font-size: 1.2rem;
 }
 .text-input:invalid label::before {
   content: "*";
-  color: red;
+  color: #e31c3d;
   font-weight: bold;
   margin-right: .25em;
 }
@@ -76,10 +76,10 @@
   display: none;
 }
 .type-ahead:invalid label {
-  color: red;
+  color: #e31c3d;
 }
 .type-ahead:invalid .fa-exclamation {
-  color: red;
+  color: #e31c3d;
   position: relative;
   font-size: 3em;
   left: .25em;
@@ -88,7 +88,7 @@
 }
 .type-ahead:invalid label::before {
   content: "*";
-  color: red;
+  color: #e31c3d;
   font-weight: bold;
   margin-right: .25em;
 }
@@ -98,19 +98,63 @@
 .radio-buttons:invalid::after {
   content: "This field is required";
   margin: .5em 0 0 1em;
-  color: red;
+  color: #e31c3d;
 }
 .radio-buttons:invalid .radio-buttons__container {
-  border: 1px dashed red;
+  border: 1px dashed #e31c3d;
 }
 .radio-buttons:invalid .radio-buttons__container label:first-of-type::before {
   content: "*";
-  color: red;
+  color: #e31c3d;
   font-weight: bold;
   margin-right: .25em;
 }
 .radio-buttons:invalid input {
   padding: .25em;
+}
+.validation-error {
+  color: #e31c3d;
+  cursor: pointer;
+  border: none;
+  font-size: 1.2rem;
+  background-color: transparent;
+  line-height: 1.2;
+  padding: 0;
+}
+.validation-error:focus .validation-error__message,
+.validation-error:hover .validation-error__message {
+  display: inline-block;
+}
+.validation-error .fa {
+  padding: 0.6rem 0.5rem;
+}
+.validation-error__message {
+  display: none;
+  border: 1px solid #e31c3d;
+  border-radius: 0 3px 3px 0;
+  margin-left: 0.9rem;
+  padding: 0.6rem 2rem;
+  background-color: #f9dede;
+  position: relative;
+}
+.validation-error__message:before,
+.validation-error__message:after {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  left: calc(-0.9rem - 1px);
+  top: -1px;
+  border-style: solid;
+  border-color: transparent #e31c3d transparent transparent;
+  border-top-width: calc(calc(1.4rem + calc(1.2rem) + calc(2px)) / 2);
+  border-right-width: 0.9rem;
+  border-bottom-width: calc(calc(1.4rem + calc(1.2rem) + calc(2px)) / 2);
+  border-left-width: 0;
+}
+.validation-error__message:after {
+  content: '';
+  border-right-color: #f9dede;
+  left: -0.9rem;
 }
 html {
   font-size: 10px;
