@@ -16,58 +16,58 @@
   </li>
 
 <form action="">
-  <fieldset class="select">
-    <span class="select-wrapper">
-      <select required>
-        <option class="select__title" value="" disabled selected>Select an option</option>
-        <option>Option 1</option>
-        <option>Option 2</option>
-        <option>Option 3</option>
-        <option>Option 4</option>
-        <option>Option 5</option>
-      </select>
-      <button class="validation-error"><i class="fa fa-exclamation"></i><span class="validation-error__message">This field is required</span></button>
-      <!--<span class="notification">
-      <i class="fa fa-exclamation" aria-hidden="true" aria-label="Sample text for your tooltip!" ></i>
-    </span> -->
-    </span>
-  </fieldset>
-  <fieldset class="date-input">
-    <!-- should be changed to a date type date picker -->
-    <input type="text" class="date-picker" required>
+  <div class="select-wrapper input-wrapper invalid">
+    <select required>
+      <option class="select__title" value="" disabled selected>Select an option</option>
+      <option>Option 1</option>
+      <option>Option 2</option>
+      <option>Option 3</option>
+      <option>Option 4</option>
+      <option>Option 5</option>
+    </select>
+    <button class="validation-error">
+      <i class="fa fa-exclamation"></i>
+      <span class="validation-error__message">This field is required</span>
+    </button>
+  </div>
+  <div class="input-wrapper invalid">
+    <input type="date" class="date-picker" required>
     <i class="fa fa-calendar" aria-hidden="true"></i>
-    <span class="notification">
-      <i class="fa fa-exclamation" aria-hidden="true"></i>
-    </span>
-  </fieldset>
-  <fieldset class="text-input">
+    <button class="validation-error">
+      <i class="fa fa-exclamation"></i>
+      <span class="validation-error__message">This field is required</span>
+    </button>
+  </div>
+  <div class="input-wrapper invalid">
     <label for="">Text Input Label:</label>
     <input type="text" name="" value="" required>
-    <span class="notification">
-      <i class="fa fa-exclamation" aria-hidden="true"></i>
-    </span>
-  </fieldset>
-  <fieldset class="type-ahead">
+    <button class="validation-error">
+      <i class="fa fa-exclamation"></i>
+      <span class="validation-error__message">This field is required</span>
+    </button>
+  </div>
+  <div class="type-ahead input-wrapper invalid">
     <label for="">Drop Down Label:</label>
     <div class="type-ahead__search-container">
       <input tabindex="0"list="type-ahead__datalist" type="text" class="type-ahead__input" placeholder="" required>
       <button href="" class="type-ahead__arrow">
         <i class="fa fa-angle-down" aria-hidden="true"></i>
       </button>
-      <span class="notification">
-        <i class="fa fa-exclamation" aria-hidden="true"></i>
-      </span>
+      <button class="validation-error">
+        <i class="fa fa-exclamation"></i>
+        <span class="validation-error__message">This field is required</span>
+      </button>
     </div>
     <div class="type-ahead__options hidden"></div>
-  </fieldset>
-  <fieldset class="radio-buttons">
+  </div>
+  <div class="radio-buttons input-wrapper invalid">
     <div class="radio-buttons__container">
       <label for="">Radio Button Group Label: </label>
       <input type="radio" name="same" required><label for="">test</label>
       <input type="radio" name="same" required><label for="">test</label>
       <input type="radio" name="same" required><label for="">test</label>
     </div>
-  </fieldset>
+  </div>
 </form>
 <script src="main.js"></script>
 </body>

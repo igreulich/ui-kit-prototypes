@@ -49,9 +49,6 @@
   color: #e31c3d;
   font-size: 1.2rem;
 }
-.date-input:invalid .fa-exclamation::after {
-  content: "Invalid date entered. Format MM/DD/YYY";
-}
 .date-input:invalid .fa-calendar {
   font-size: 1.2rem;
 }
@@ -113,6 +110,7 @@
   padding: .25em;
 }
 .validation-error {
+  display: none;
   color: #e31c3d;
   cursor: pointer;
   border: none;
@@ -127,6 +125,9 @@
 }
 .validation-error .fa {
   padding: 0.6rem 0.5rem;
+}
+.input-wrapper.invalid .validation-error {
+  display: inline-block;
 }
 .validation-error__message {
   display: none;

@@ -80,7 +80,7 @@
     color: @red;
     font-size: @font-normal;
     &::after {
-      content: "Invalid date entered. Format MM/DD/YYY";
+      //content: "Invalid date entered. Format MM/DD/YYY";
     }
   }
   .fa-calendar {
@@ -190,7 +190,7 @@
     padding: @verror-vertical-padding .5rem;
   }
 }
-select:invalid + .validation-error {
+.input-wrapper.invalid .validation-error {
   display: inline-block;
 }
 .validation-error__message {
