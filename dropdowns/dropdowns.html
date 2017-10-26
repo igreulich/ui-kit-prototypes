@@ -16,8 +16,8 @@
   </li>
 
 <form action="">
-  <div class="select-wrapper input-wrapper invalid">
-    <select required>
+  <div class="select-wrapper input-wrapper">
+    <select required class="js_valid__target">
       <option class="select__title" value="" disabled selected>Select an option</option>
       <option>Option 1</option>
       <option>Option 2</option>
@@ -30,26 +30,25 @@
       <span class="validation-error__message">This field is required</span>
     </button>
   </div>
-  <div class="input-wrapper invalid">
-    <input type="date" class="date-picker" required>
+  <div class="input-wrapper  ">
+    <input type="date" class="date-picker js_valid__target" required>
     <i class="fa fa-calendar" aria-hidden="true"></i>
     <button class="validation-error">
       <i class="fa fa-exclamation"></i>
       <span class="validation-error__message">This field is required</span>
     </button>
   </div>
-  <div class="input-wrapper invalid">
+  <div class="input-wrapper  ">
     <label for="">Text Input Label:</label>
-    <input type="text" name="" value="" required>
+    <input type="text" name="" value="" class="js_valid__target" required>
     <button class="validation-error">
       <i class="fa fa-exclamation"></i>
       <span class="validation-error__message">This field is required</span>
     </button>
   </div>
-  <div class="type-ahead input-wrapper invalid">
+  <div class="type-ahead input-wrapper type-ahead__search-container ">
     <label for="">Drop Down Label:</label>
-    <div class="type-ahead__search-container">
-      <input tabindex="0"list="type-ahead__datalist" type="text" class="type-ahead__input" placeholder="" required>
+      <input tabindex="0"list="type-ahead__datalist" type="text" class="type-ahead__input js_valid__target" placeholder="" required>
       <button href="" class="type-ahead__arrow">
         <i class="fa fa-angle-down" aria-hidden="true"></i>
       </button>
@@ -57,25 +56,24 @@
         <i class="fa fa-exclamation"></i>
         <span class="validation-error__message">This field is required</span>
       </button>
-    </div>
     <div class="type-ahead__options hidden"></div>
   </div>
-  <div class="radio-button-group invalid">
-    <div class="radio-buttons__container">
-      <label for="">Radio Button Group Label: </label>
-      <input type="radio" name="same" required><label for="">test</label>
-      <input type="radio" name="same" required><label for="">test</label>
-      <input type="radio" name="same" required><label for="">test</label>
-    </div>
+  <div class="radio-button-group radio-buttons__container" required>
+    <label for="">Radio Button Group Label: </label>
+    <input class="js_valid__target" type="radio" name="same" required><label for="">test</label>
+    <input class="js_valid__target" type="radio" name="same"><label for="">test</label>
+    <input class="js_valid__target" type="radio" name="same"><label for="">test</label>
   </div>
-  <div class="checkbox-group invalid">
+  <div class="checkbox-group" required>
     <label>Checkbox Group Label</label>
-    <input type="checkbox"><label for="">test</label>
-    <input type="checkbox"><label for="">test</label>
-    <input type="checkbox"><label for="">test</label>
-    <input type="checkbox"><label for="">test</label>
+    <input class="js_valid__target" type="checkbox" required><label for="">test</label>
+    <input class="js_valid__target" type="checkbox"><label for="">test</label>
+    <input class="js_valid__target" type="checkbox"><label for="">test</label>
+    <input class="js_valid__target" type="checkbox"><label for="">test</label>
   </div>
+  <button id="submit">Submit</button>
 </form>
-<script src="main.js"></script>
+<script src="typeahead.js"></script>
+<script src="validity.js"></script>
 </body>
 </html>

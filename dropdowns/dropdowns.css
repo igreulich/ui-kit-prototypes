@@ -224,9 +224,9 @@ html {
   content: '';
   height: 0;
   width: 0;
-  position: absolute;
-  right: 1rem;
-  top: calc(50% - 0.25rem);
+  position: relative;
+  right: 3.75rem;
+  top: 1rem;
   border: .5rem solid transparent;
   border-bottom-width: 0;
   border-top-color: #205493;
