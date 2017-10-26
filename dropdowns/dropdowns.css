@@ -1,113 +1,25 @@
-.notification .fa-exclamation::after {
-  content: "This field is required.";
-  position: relative;
-  bottom: 0em;
-  border: 1px solid #e31c3d;
-  width: 100%;
-  opacity: 0;
-  padding: .25em .25em;
-  border-radius: .25em;
-  font-size: 1.2rem;
-  background: #f9dede;
-  margin-left: .25em;
-}
-.notification .fa-exclamation:hover::after {
-  opacity: 1;
-}
-.notification .fa-exclamation {
-  cursor: pointer;
-}
-.date-input input:invalid,
-.select-wrapper select:invalid,
-.text-input input:invalid,
-.type-ahead input:invalid {
+.input-wrapper.invalid input,
+.input-wrapper.invalid select {
   border: 1px solid #e31c3d;
 }
-.select:invalid select {
-  border: 1px solid #e31c3d;
+.input-wrapper.invalid .validation-error {
+  display: inline-block;
 }
-.select:invalid .fa-exclamation {
-  color: #e31c3d;
-  font-size: 1.7rem;
-}
-.select:valid .fa-exclamation {
-  display: none;
-}
-.select-wrapper::after {
-  left: 11rem;
-}
-.date-input:invalid::before {
-  content: "*";
-  color: #e31c3d;
-  font-weight: bold;
-  margin-right: .25em;
-  position: relative;
-  bottom: .5em;
-  left: .25em;
-}
-.date-input:invalid .fa-exclamation {
-  color: #e31c3d;
-  font-size: 1.2rem;
-}
-.date-input:invalid .fa-calendar {
-  font-size: 1.2rem;
-}
-.date-input:valid .fa-exclamation {
-  display: none;
-}
-.text-input:invalid label {
+.input-wrapper.invalid label {
   color: #e31c3d;
 }
-.text-input:invalid .fa-exclamation {
-  color: #e31c3d;
-  position: relative;
-  font-size: 1.2rem;
+.input-wrapper.invalid label::before {
+  content: '*';
 }
-.text-input:invalid label::before {
-  content: "*";
-  color: #e31c3d;
-  font-weight: bold;
-  margin-right: .25em;
-}
-.text-input:valid .fa-exclamation {
-  display: none;
-}
-.type-ahead:invalid label {
-  color: #e31c3d;
-}
-.type-ahead:invalid .fa-exclamation {
-  color: #e31c3d;
-  position: relative;
-  font-size: 3em;
-  left: .25em;
-  display: flex;
-  align-self: center;
-}
-.type-ahead:invalid label::before {
-  content: "*";
-  color: #e31c3d;
-  font-weight: bold;
-  margin-right: .25em;
-}
-.type-ahead:valid .fa-exclamation {
-  display: none;
-}
-.radio-buttons:invalid::after {
-  content: "This field is required";
-  margin: .5em 0 0 1em;
-  color: #e31c3d;
-}
-.radio-buttons:invalid .radio-buttons__container {
+.radio-button-group.invalid,
+.checkbox-group.invalid {
   border: 1px dashed #e31c3d;
+  border-radius: 3px;
 }
-.radio-buttons:invalid .radio-buttons__container label:first-of-type::before {
-  content: "*";
+.radio-button-group.invalid label:first-of-type::before,
+.checkbox-group.invalid label:first-of-type::before {
+  content: '*';
   color: #e31c3d;
-  font-weight: bold;
-  margin-right: .25em;
-}
-.radio-buttons:invalid input {
-  padding: .25em;
 }
 .validation-error {
   display: none;
@@ -125,9 +37,6 @@
 }
 .validation-error .fa {
   padding: 0.6rem 0.5rem;
-}
-.input-wrapper.invalid .validation-error {
-  display: inline-block;
 }
 .validation-error__message {
   display: none;
@@ -347,11 +256,11 @@ form .text-input label {
   width: 100%;
   display: flex;
 }
-form .radio-buttons {
+form .radio-button-group {
   display: flex;
   width: 50%;
 }
-form .radio-buttons .radio-buttons__container {
+form .radio-button-group .radio-buttons__container {
   margin-top: 1em;
   display: flex;
   justify-content: flex-start;
@@ -362,14 +271,14 @@ form .radio-buttons .radio-buttons__container {
   padding: 1em;
   border-radius: .75em;
 }
-form .radio-buttons .radio-buttons__container label {
+form .radio-button-group .radio-buttons__container label {
   width: 80%;
   max-width: 85%;
 }
-form .radio-buttons .radio-buttons__container label:first-of-type {
+form .radio-button-group .radio-buttons__container label:first-of-type {
   width: 100%;
   margin: 0 1em .5em 0;
 }
-form .radio-buttons .radio-buttons__container input[type="radio"] {
+form .radio-button-group .radio-buttons__container input[type="radio"] {
   margin-left: 1.25em;
 }
