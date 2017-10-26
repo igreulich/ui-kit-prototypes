@@ -7,21 +7,31 @@
       parent.appendChild(item);
     }
     parent.classList.add('hidden');
+    generateLabel('Type Ahead Dropdown Text Input');
   };
 
   // Generates Markup to be Displayed in renderMarkUp
-  var generateMarkUp = function(array) {
+  var generateMarkUp = function(data, objProperty) {
     var options = data.map(function(el, index){
-      // for some really stupid reason I cant do option elements
+      // input is probably not the best element type to use
       var optionElement = document.createElement('input');
-      // because option.value don't work
-      optionElement.value = el;
-      optionElement.tabIndex = -index - 1;
       optionElement.className = 'type-ahead__option';
       optionElement.addEventListener('click', addOptionToInput);
+      optionElement.tabIndex = -index - 1;
+      if (typeof el === 'string') {
+        optionElement.value = el;
+      } else if (typeof el === 'object') {
+        // deal with an array of objects
+        optionElement.value = el[objProperty];
+      }
       return optionElement;
     });
     return options;
+  }
+
+// Generating the label for the Input
+  var generateLabel = function(label) {
+    document.getElementsByClassName('typeahead__label')[0].innerHTML = label;
   };
 
   // Shows/Hides Markup
@@ -31,20 +41,19 @@
 
   // Filters MarkUp
   var filterDropDownOptions = function() {
-    var criteria = event.target.value;
+    var criteria = event.target.value.toUpperCase();
     var items = document.querySelectorAll('.type-ahead__option');
     for (let item of items) {
-      if (!item.value.includes(criteria)) {
+      var itemValue = item.value.toUpperCase();
+      if (!itemValue.includes(criteria)) {
         item.classList.add('hidden');
-      } else if (item.value.includes(criteria)){
+      } else if (itemValue.includes(criteria)){
         item.classList.contains('hidden') ? item.classList.remove('hidden') : null;
       }
     }
     if (document.querySelectorAll('input.hidden').length === items.length) {
-     console.log('all inputs are hidden, whole container should be hidden');
      markup.optionsContainer.classList.add('hidden');
    } else if (document.querySelectorAll('input.hidden').length < items.length) {
-     console.log('NOT all inputs are hidden, container should be visible');
      markup.optionsContainer.classList.contains('hidden') ?
        markup.optionsContainer.classList.remove('hidden') :
        null;
@@ -53,17 +62,17 @@
 
   // Adds selected option to the textInput
   var addOptionToInput = function() {
-    console.log('addOptionToInput is firing', event.target.value);
     var selectedInput = event.target.value;
     markup.dropDownInput.value = selectedInput;
     toggleDropDown();
   };
 
   // I. Getting Data for the dropdown (to be retrived via HTTP Request)
-  var data = ['test', 'test2', 'test3', 'test4', 'test3','test3','test3','test3','test3','test3','test3'];
+  // var data = [{ name: 'Tom' },{ name: 'Jerry' }, { name: 'Blue' }];
+  var data = ['Tom', 'John', 'Alfred', 'Jerry', 'Peter','Chris','Zebra','Goat','Dog','Chester','Waldo'];
   // II. Making a robust object made of markup for iteration and easy reference
   var markup = {
-    options: generateMarkUp(data),
+    options: generateMarkUp(data, 'name'),
     body: document.getElementsByTagName('body')[0],
     dropDownArrow: document.getElementsByClassName('type-ahead__arrow')[0],
     dropDownInput: document.getElementsByClassName('type-ahead__input')[0],
