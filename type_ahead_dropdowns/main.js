@@ -15,7 +15,7 @@
     var options = data.map(function(el, index){
       // input is probably not the best element type to use
       var optionElement = document.createElement('input');
-      optionElement.className = 'type-ahead__option';
+      optionElement.className = 'typeahead__option';
       optionElement.addEventListener('click', addOptionToInput);
       optionElement.tabIndex = -index - 1;
       if (typeof el === 'string') {
@@ -42,7 +42,7 @@
   // Filters MarkUp
   var filterDropDownOptions = function() {
     var criteria = event.target.value.toUpperCase();
-    var items = document.querySelectorAll('.type-ahead__option');
+    var items = document.querySelectorAll('.typeahead__option');
     for (let item of items) {
       var itemValue = item.value.toUpperCase();
       if (!itemValue.includes(criteria)) {
@@ -74,9 +74,9 @@
   var markup = {
     options: generateMarkUp(data, 'name'),
     body: document.getElementsByTagName('body')[0],
-    dropDownArrow: document.getElementsByClassName('type-ahead__arrow')[0],
-    dropDownInput: document.getElementsByClassName('type-ahead__input')[0],
-    optionsContainer: document.getElementsByClassName('type-ahead__options')[0]
+    dropDownArrow: document.getElementsByClassName('typeahead__arrow')[0],
+    dropDownInput: document.getElementsByClassName('typeahead__input')[0],
+    optionsContainer: document.getElementsByClassName('typeahead__options')[0]
   };
   // III. Actually rendering the markup
   renderMarkUp(markup.options, markup.optionsContainer);
