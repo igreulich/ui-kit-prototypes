@@ -16,7 +16,7 @@
       var optionElement = document.createElement('input');
       // because option.value don't work
       optionElement.value = el;
-      optionElement.tabIndex = -index - 1;
+      optionElement.tabIndex = 0;
       optionElement.className = 'type-ahead__option';
       optionElement.addEventListener('click', addOptionToInput);
       return optionElement;
@@ -55,6 +55,8 @@
     var selectedInput = event.target.value;
     markup.dropDownInput.value = selectedInput;
     toggleDropDown();
+    var evt = document.createEvent("HTMLEvents");
+    evt.initEvent("change", true, true);
   };
 
   // I. Getting Data for the dropdown (to be retrived via HTTP Request)

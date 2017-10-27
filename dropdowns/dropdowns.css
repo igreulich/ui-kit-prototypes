@@ -256,6 +256,14 @@ form .text-input label {
   width: 100%;
   display: flex;
 }
+form .type-ahead {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+form .type-ahead label {
+  margin-right: 90%;
+  width: 100%;
+}
 form .radio-button-group {
   display: flex;
   width: 50%;

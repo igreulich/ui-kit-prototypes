@@ -3,15 +3,17 @@
     inputs: document.querySelectorAll('.js_valid__target'),
     button: document.getElementById('submit'),
   };
-  var checkValidity = function (){
-    for (input of markup.inputs) {
-      !input.validity.valid ? input.parentElement.classList.add('invalid') : null;
-    }
-  };
-  for (input of markup.inputs) {
-    input.addEventListener('click', function(){
-      input.validity.valid ? console.log('remove invalid class') : null;
-    });
+  var checkValidity = function () {
+    console.log('checkvalidity fired!');
+    // need to find .input-wrapper instead of just going up one parent
+    var input = event.target;
+    input.validity.valid ? removeInvalidClass(input) : input.parentElement.classList.add('invalid');
   }
-  markup.button.addEventListener('click', checkValidity);
+  var removeInvalidClass = function(input) {
+    input.validity.valid && input.parentElement.classList.contains('invalid') ? input.parentElement.classList.remove('invalid') : null;
+  }
+  for (input of markup.inputs) {
+    input.addEventListener('blur', checkValidity);
+    input.addEventListener('input', checkValidity);
+  };
 }());
