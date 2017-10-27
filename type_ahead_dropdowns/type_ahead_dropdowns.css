@@ -11,7 +11,8 @@ html {
   margin: .5rem 0;
 }
 .typeahead__container .typeahead__input-container {
-  display: flex;
+  display: inline-flex;
+  flex-wrap: wrap;
 }
 .typeahead__container .typeahead__input-container .typeahead__input,
 .typeahead__container .typeahead__input-container .typeahead__arrow {
@@ -33,6 +34,7 @@ html {
   width: 4rem;
   background: #3e94cf;
   margin-left: -1.6rem;
+  margin-right: 60%;
   border: .10rem solid #4395CD;
 }
 .typeahead__container .typeahead__input-container .typeahead__arrow i.fa.fa-angle-down {
@@ -47,6 +49,7 @@ html {
   border: 0.1rem solid #eeeeee;
   overflow-y: scroll;
   min-height: 2rem;
+  margin: 0;
 }
 .typeahead__options .typeahead__option {
   border: none;

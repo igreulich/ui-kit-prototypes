@@ -13,7 +13,8 @@ html {
     margin: .5rem 0;
   }
   .typeahead__input-container {
-    display: flex;
+    display: inline-flex;
+    flex-wrap: wrap;
     .typeahead__input,
     .typeahead__arrow {
       height: auto;
@@ -34,6 +35,7 @@ html {
         width: 4rem;
         background: @blue-light;
         margin-left: -1.6rem;
+        margin-right: 60%;
         border: .10rem solid #4395CD;
         i.fa.fa-angle-down {
           color: white;
@@ -51,6 +53,7 @@ html {
   border: 0.1rem solid #eeeeee;
   overflow-y: scroll;
   min-height: 2rem;
+  margin: 0;
   .typeahead__option {
     border: none;
   }

@@ -14,15 +14,15 @@
   var generateMarkUp = function(data, objProperty) {
     var options = data.map(function(el, index){
       // input is probably not the best element type to use
-      var optionElement = document.createElement('input');
+      var optionElement = document.createElement('li');
       optionElement.className = 'typeahead__option';
       optionElement.addEventListener('click', addOptionToInput);
-      optionElement.tabIndex = -index - 1;
+      optionElement.tabIndex = 0;
       if (typeof el === 'string') {
-        optionElement.value = el;
+        optionElement.innerHTML = el;
       } else if (typeof el === 'object') {
         // deal with an array of objects
-        optionElement.value = el[objProperty];
+        optionElement.innerHTML = el[objProperty];
       }
       return optionElement;
     });
@@ -35,36 +35,67 @@
   };
 
   // Shows/Hides Markup
-  var toggleDropDown = function () {
-    markup.optionsContainer.classList.toggle('hidden');
+  var showElement = function(el) {
+    el.classList.remove('hidden');
   };
 
-  // Filters MarkUp
-  var filterDropDownOptions = function() {
-    var criteria = event.target.value.toUpperCase();
-    var items = document.querySelectorAll('.typeahead__option');
-    for (let item of items) {
-      var itemValue = item.value.toUpperCase();
-      if (!itemValue.includes(criteria)) {
-        item.classList.add('hidden');
-      } else if (itemValue.includes(criteria)){
-        item.classList.contains('hidden') ? item.classList.remove('hidden') : null;
-      }
-    }
-    if (document.querySelectorAll('input.hidden').length === items.length) {
-     markup.optionsContainer.classList.add('hidden');
-   } else if (document.querySelectorAll('input.hidden').length < items.length) {
-     markup.optionsContainer.classList.contains('hidden') ?
-       markup.optionsContainer.classList.remove('hidden') :
-       null;
-   }
+  var hideElement = function(el) {
+    el.classList.add('hidden');
   };
+
+  var inputHandler = function(event) {
+    var options = event.target.parentNode.querySelector('.typeahead__options');
+    var criteria = event.target.value;
+    switch (event.keyCode) {
+      // down arrow
+      case 40:
+        console.log('down arrow is pressed');
+        goToNext();
+        break;
+      // up arrow
+      case 38:
+        console.log('up arrow is pressed');
+        goToPrevious();
+        break;
+      case 13:
+        console.log('enter is pressed');
+        break;
+      default:
+        filterDropDownOptions(options, criteria);
+        break;
+    }
+  }
+
+  var goToNext = function() {
+    console.log('gotonext fired');
+    // do we just apply a class to the item...?
+  }
+
+  var goToPrevious = function() {
+    console.log('goToPrevious fired');
+    // do we just apply a class to the item...?
+
+  }
+
+  // Filters MarkUp
+  var filterDropDownOptions = function(options, criteria) {
+    var list = [];
+    var criteriaLowerCase = criteria.toLowerCase();
+
+    var matched = Array.from(options.children).map(function(el){
+      if (el.innerHTML.startsWith(criteria)) {
+        el.classList.remove('hidden');
+      } else {
+        el.classList.add('hidden');
+      }
+    });
+  }
 
   // Adds selected option to the textInput
   var addOptionToInput = function() {
-    var selectedInput = event.target.value;
+    var selectedInput = event.target.innerHTML;
     markup.dropDownInput.value = selectedInput;
-    toggleDropDown();
+    hideElement(event.target.parentNode);
   };
 
   // I. Getting Data for the dropdown (to be retrived via HTTP Request)
@@ -76,10 +107,14 @@
     body: document.getElementsByTagName('body')[0],
     dropDownArrow: document.getElementsByClassName('typeahead__arrow')[0],
     dropDownInput: document.getElementsByClassName('typeahead__input')[0],
-    optionsContainer: document.getElementsByClassName('typeahead__options')[0]
+    optionsContainer: document.getElementsByClassName('typeahead__options')[0],
+    option: document.getElementsByClassName('typeahead__option')
   };
   // III. Actually rendering the markup
   renderMarkUp(markup.options, markup.optionsContainer);
-  markup.dropDownArrow.addEventListener('click', toggleDropDown);
-  markup.dropDownInput.addEventListener('keyup', filterDropDownOptions);
+  // markup.dropDownArrow.addEventListener('click', showElement.bind(this, this.parentElement.querySelector('.typeahead__options')));
+  // markup.dropDownInput.addEventListener('focus', showElement.bind(this, this.parentElement.querySelector('.typeahead__options')));
+  markup.dropDownArrow.addEventListener('click', function(){ showElement(this.parentElement.querySelector('.typeahead__options'));});
+  markup.dropDownInput.addEventListener('focus', function(){ showElement(this.parentElement.querySelector('.typeahead__options'));});
+  markup.dropDownInput.addEventListener('keyup', inputHandler);
 }());
