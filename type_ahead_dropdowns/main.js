@@ -44,8 +44,8 @@
   };
 
   var inputHandler = function(event) {
-
     var options = event.target.parentNode.querySelector('.typeahead__options');
+    options.classList.contains('hidden') ? showElement(options) : null;
     var criteria = event.target.value;
     switch (event.keyCode) {
       // down arrow
@@ -101,11 +101,11 @@
 
   // Filters MarkUp
   var filterDropDownOptions = function(options, criteria) {
-    var list = [];
     var criteriaLowerCase = criteria.toLowerCase();
 
     var matched = Array.from(options.children).map(function(el){
-      if (el.innerHTML.startsWith(criteria)) {
+      var optionLowerCase = el.innerHTML.toLowerCase();
+      if (optionLowerCase.startsWith(criteriaLowerCase)) {
         el.classList.remove('hidden');
       } else {
         el.classList.add('hidden');
@@ -115,8 +115,14 @@
 
   // Adds selected option to the textInput on Click
   var addOptionToInput = function() {
-    var selectedInput = event.target.innerHTML;
-    markup.dropDownInput.value = selectedInput;
+    var selectedOption = event.target;
+    var input = event.target.parentElement.parentElement.querySelector('.typeahead__input');
+    var options = event.target.parentElement.querySelectorAll('.typeahead__option');
+    for (option of options){
+      option.classList.contains('selected') ? option.classList.remove('selected') : null;
+    }
+    selectedOption.classList.add('selected');
+    input.value = selectedOption.innerHTML;
     hideElement(event.target.parentNode);
   };
 
