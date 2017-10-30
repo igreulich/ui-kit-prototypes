@@ -17,7 +17,7 @@
       var optionElement = document.createElement('li');
       optionElement.className = 'typeahead__option';
       optionElement.addEventListener('click', addOptionToInput);
-      optionElement.tabIndex = 0;
+      optionElement.tabIndex = -1;
       if (typeof el === 'string') {
         optionElement.innerHTML = el;
       } else if (typeof el === 'object') {
@@ -44,6 +44,7 @@
   };
 
   var inputHandler = function(event) {
+
     var options = event.target.parentNode.querySelector('.typeahead__options');
     var criteria = event.target.value;
     switch (event.keyCode) {
@@ -59,6 +60,7 @@
         break;
       case 13:
         console.log('enter is pressed');
+        enterOptionToInput();
         break;
       default:
         filterDropDownOptions(options, criteria);
@@ -67,14 +69,34 @@
   }
 
   var goToNext = function() {
-    console.log('gotonext fired');
-    // do we just apply a class to the item...?
+    var optionsContainer = event.target.parentNode.querySelector('.typeahead__options');
+    var items = optionsContainer.querySelectorAll('.typeahead__option:not(.hidden)');
+    if (optionsContainer.querySelectorAll('.typeahead__option.selected').length > 0){
+      for (var i = 0; i < items.length - 1; i++) {
+        if (items[i].classList.contains('selected')) {
+          items[i].classList.remove('selected');
+          items[i + 1].classList.add('selected');
+          break;
+        }
+      }
+    } else {
+      items[0].classList.add('selected');
+    }
   }
 
   var goToPrevious = function() {
-    console.log('goToPrevious fired');
-    // do we just apply a class to the item...?
-
+    var optionsContainer = event.target.parentNode.querySelector('.typeahead__options');
+    var items = optionsContainer.querySelectorAll('.typeahead__option:not(.hidden)');
+    items[0].classList.contains('selected') ? items[0].classList.remove('selected') : null;
+    if (optionsContainer.querySelectorAll('.typeahead__option.selected').length > 0){
+      for (var i = 0; i < items.length; i++) {
+        if (items[i].classList.contains('selected')) {
+          items[i].classList.remove('selected');
+          items[i - 1].classList.add('selected');
+          break;
+        }
+      }
+    }
   }
 
   // Filters MarkUp
@@ -91,11 +113,18 @@
     });
   }
 
-  // Adds selected option to the textInput
+  // Adds selected option to the textInput on Click
   var addOptionToInput = function() {
     var selectedInput = event.target.innerHTML;
     markup.dropDownInput.value = selectedInput;
     hideElement(event.target.parentNode);
+  };
+
+  var enterOptionToInput = function(){
+    var selectedInput = event.target.parentElement.querySelector('.typeahead__options .selected');
+    // console.log(selectedInput.innerHTML);
+    selectedInput ? event.target.value = selectedInput.innerHTML : null;
+    hideElement(event.target.parentElement.querySelector('.typeahead__options'));
   };
 
   // I. Getting Data for the dropdown (to be retrived via HTTP Request)
@@ -112,9 +141,11 @@
   };
   // III. Actually rendering the markup
   renderMarkUp(markup.options, markup.optionsContainer);
-  // markup.dropDownArrow.addEventListener('click', showElement.bind(this, this.parentElement.querySelector('.typeahead__options')));
-  // markup.dropDownInput.addEventListener('focus', showElement.bind(this, this.parentElement.querySelector('.typeahead__options')));
-  markup.dropDownArrow.addEventListener('click', function(){ showElement(this.parentElement.querySelector('.typeahead__options'));});
+  markup.dropDownArrow.addEventListener('click', function(){
+    var optionsContainer = this.parentElement.querySelector('.typeahead__options');
+    optionsContainer.classList.contains('hidden') ? showElement(optionsContainer) : hideElement(optionsContainer);
+    // this.parentElement.querySelector('.typeahead__input').focus();
+  });
   markup.dropDownInput.addEventListener('focus', function(){ showElement(this.parentElement.querySelector('.typeahead__options'));});
   markup.dropDownInput.addEventListener('keyup', inputHandler);
 }());

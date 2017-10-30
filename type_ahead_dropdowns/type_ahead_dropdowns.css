@@ -54,6 +54,9 @@ html {
 .typeahead__options .typeahead__option {
   border: none;
 }
+.typeahead__options .selected {
+  border: 1px solid red;
+}
 input::-webkit-calendar-picker-indicator {
   display: none;
 }
