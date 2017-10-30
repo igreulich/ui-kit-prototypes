@@ -38,6 +38,14 @@ html {
   margin-right: 60%;
   border: .10rem solid #4395CD;
 }
+.typeahead__container .typeahead__input-container .typeahead__arrow:hover,
+.typeahead__container .typeahead__input-container .typeahead__arrow:focus {
+  background-color: white;
+}
+.typeahead__container .typeahead__input-container .typeahead__arrow:hover i.fa.fa-angle-down,
+.typeahead__container .typeahead__input-container .typeahead__arrow:focus i.fa.fa-angle-down {
+  color: #3e94cf;
+}
 .typeahead__container .typeahead__input-container .typeahead__arrow i.fa.fa-angle-down {
   color: white;
   font-size: 2.5rem;
@@ -68,13 +76,6 @@ html {
 }
 input::-webkit-calendar-picker-indicator {
   display: none;
-}
-.typeahead__arrow:hover {
-  cursor: pointer;
-  background: white;
-}
-.typeahead__arrow:hover i.fa.fa-angle-down {
-  color: #eeeeee;
 }
 .typeahead__option:hover {
   cursor: pointer;

@@ -44,50 +44,71 @@
   };
 
   var inputHandler = function(event) {
-    var options = event.target.parentNode.querySelector('.typeahead__options');
-    options.classList.contains('hidden') ? removeClass(options, 'hidden') : null;
     var criteria = event.target.value;
+    var optionsContainer = event.target.parentNode.querySelector('.typeahead__options');
+
     switch (event.keyCode) {
       // down arrow
       case 40:
-        goToNext();
+        goToNext(optionsContainer);
         break;
       // up arrow
       case 38:
-        goToPrevious();
+        goToPrevious(optionsContainer);
         break;
       // enter
       case 13:
         enterOptionToInput();
         break;
       default:
-        filterDropDownOptions(options, criteria);
+        filterDropDownOptions(optionsContainer, criteria);
         break;
     }
-  }
+  };
 
-  var goToNext = function() {
-    var optionsContainer = event.target.parentNode.querySelector('.typeahead__options');
+  var moveSelectedClass = function(array, incrementer){
+    // iterates thru an array
+    // index starting point is items.length if less than 0
+    // index starting point is 0
+    // trying to implement this on goToNext and goToPrevious
+    var startingPoint;
+    var endingPoint;
+
+    if (incrementer >= 0){
+      startingPoint = 0
+      endingPoint = array.length - incrementer;
+    } else {
+      startingPoint = array.length - 1;
+      endingPoint = 0 - incrementer;
+    }
+
+    for (var i = startingPoint; i < endingPoint; i = i + incrementer) {
+      if (array[i].classList.contains('selected')) {
+        array[i].classList.remove('selected');
+        array[i + incrementer].classList.add('selected');
+        break;
+      }
+    }
+  };
+
+  var goToNext = function(optionsContainer) {
+    removeClass(event.target.parentElement.querySelector('.typeahead__options'), 'hidden');
     var items = optionsContainer.querySelectorAll('.typeahead__option:not(.hidden)');
     if (optionsContainer.querySelectorAll('.typeahead__option.selected').length > 0){
-      for (var i = 0; i < items.length - 1; i++) {
-        if (items[i].classList.contains('selected')) {
-          items[i].classList.remove('selected');
-          items[i + 1].classList.add('selected');
-          break;
-        }
-      }
+      moveSelectedClass(items, 1);
     } else {
       items[0].classList.add('selected');
     }
-  }
+  };
 
-  var goToPrevious = function() {
-    var optionsContainer = event.target.parentNode.querySelector('.typeahead__options');
+  var goToPrevious = function(optionsContainer) {
     var items = optionsContainer.querySelectorAll('.typeahead__option:not(.hidden)');
-    items[0].classList.contains('selected') ? items[0].classList.remove('selected') : null;
+    // always remove selected from the first element
+    items[0].classList.remove('selected');
+    // the below will evaluate to false and no looping will occur if items[0] was selected previously
     if (optionsContainer.querySelectorAll('.typeahead__option.selected').length > 0){
-      for (var i = 0; i < items.length; i++) {
+      // moveSelectedClass(items, -1);
+      for (var i = items.length -1; i > 0; i--) {
         if (items[i].classList.contains('selected')) {
           items[i].classList.remove('selected');
           items[i - 1].classList.add('selected');
@@ -95,12 +116,11 @@
         }
       }
     }
-  }
+  };
 
   // Filters MarkUp
   var filterDropDownOptions = function(options, criteria) {
     var criteriaLowerCase = criteria.toLowerCase();
-
     var matched = Array.from(options.children).map(function(el){
       var optionLowerCase = el.innerHTML.toLowerCase();
       if (optionLowerCase.startsWith(criteriaLowerCase)) {
@@ -139,6 +159,19 @@
     addClass(event.target, 'selected');
   };
 
+  var dropDownArrowClick = function(context){
+    var optionsContainer = context.parentElement.querySelector('.typeahead__options');
+    var options = optionsContainer.querySelectorAll('.typeahead__option');
+    if (optionsContainer.classList.contains('hidden')){
+      removeClass(optionsContainer, 'hidden');
+      for (option of options){
+        removeClass(option, 'hidden');
+      };
+    } else {
+      addClass(optionsContainer, 'hidden');
+    }
+  };
+
   // I. Getting Data for the dropdown (likely to be retrived via HTTP Request)
   var data = ['Tom', 'John', 'Alfred', 'Jerry', 'Peter','Chris','Zebra','Goat','Dog','Chester','Waldo'];
   // var data = [{ name: 'Tom' },{ name: 'Jerry' }, { name: 'Blue' }];
@@ -156,10 +189,7 @@
   renderMarkUp(markup.options, markup.optionsContainer);
 
   // IV. Toggle the visibility of options under drop down for dropdownArrow onclick
-  markup.dropDownArrow.addEventListener('click', function(){
-    var optionsContainer = this.parentElement.querySelector('.typeahead__options');
-    optionsContainer.classList.contains('hidden') ? removeClass(optionsContainer, 'hidden') : addClass(optionsContainer, 'hidden');
-  });
+  markup.dropDownArrow.addEventListener('click', function(){ dropDownArrowClick(this)} );
 
   // V. Clicking input shows options:
   markup.dropDownInput.addEventListener('focus', function(){ removeClass(this.parentElement.querySelector('.typeahead__options'), 'hidden');});

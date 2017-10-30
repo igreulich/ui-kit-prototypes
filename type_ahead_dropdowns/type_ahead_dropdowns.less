@@ -38,10 +38,17 @@ html {
         outline: none;
         margin-right: 60%;
         border: .10rem solid #4395CD;
-        i.fa.fa-angle-down {
-          color: white;
-          font-size: 2.5rem;
+        &:hover, &:focus {
+          background-color: white;
         }
+        &:hover i.fa.fa-angle-down,
+        &:focus i.fa.fa-angle-down {
+          color: @blue-light;
+        }
+        i.fa.fa-angle-down {
+         color: white;
+         font-size: 2.5rem;
+       }
     }
   }
 }
@@ -77,13 +84,6 @@ input::-webkit-calendar-picker-indicator {
   display: none;
 }
 
-.typeahead__arrow:hover {
-  cursor: pointer;
-  background: white;
-  i.fa.fa-angle-down {
-    color: rgb(238, 238, 238);
-  }
-}
 
 .typeahead__option:hover {
   cursor: pointer;
