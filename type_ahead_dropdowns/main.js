@@ -35,31 +35,29 @@
   };
 
   // Shows/Hides Markup
-  var showElement = function(el) {
-    el.classList.remove('hidden');
+  var removeClass = function(el, className) {
+    el.classList.remove(className);
   };
 
-  var hideElement = function(el) {
-    el.classList.add('hidden');
+  var addClass = function(el, className) {
+    el.classList.add(className);
   };
 
   var inputHandler = function(event) {
     var options = event.target.parentNode.querySelector('.typeahead__options');
-    options.classList.contains('hidden') ? showElement(options) : null;
+    options.classList.contains('hidden') ? removeClass(options, 'hidden') : null;
     var criteria = event.target.value;
     switch (event.keyCode) {
       // down arrow
       case 40:
-        console.log('down arrow is pressed');
         goToNext();
         break;
       // up arrow
       case 38:
-        console.log('up arrow is pressed');
         goToPrevious();
         break;
+      // enter
       case 13:
-        console.log('enter is pressed');
         enterOptionToInput();
         break;
       default:
@@ -123,35 +121,54 @@
     }
     selectedOption.classList.add('selected');
     input.value = selectedOption.innerHTML;
-    hideElement(event.target.parentNode);
+    addClass(event.target.parentNode, 'hidden');
   };
 
   var enterOptionToInput = function(){
     var selectedInput = event.target.parentElement.querySelector('.typeahead__options .selected');
     // console.log(selectedInput.innerHTML);
     selectedInput ? event.target.value = selectedInput.innerHTML : null;
-    hideElement(event.target.parentElement.querySelector('.typeahead__options'));
+    addClass(event.target.parentElement.querySelector('.typeahead__options'), 'hidden');
   };
 
-  // I. Getting Data for the dropdown (to be retrived via HTTP Request)
-  // var data = [{ name: 'Tom' },{ name: 'Jerry' }, { name: 'Blue' }];
+  var addSelectedOnHover = function(){
+    var options = event.target.parentElement.querySelectorAll('.typeahead__option');
+    for (option of options) {
+      option.classList.contains('selected') ? removeClass(option, 'selected') : null;
+    }
+    addClass(event.target, 'selected');
+  };
+
+  // I. Getting Data for the dropdown (likely to be retrived via HTTP Request)
   var data = ['Tom', 'John', 'Alfred', 'Jerry', 'Peter','Chris','Zebra','Goat','Dog','Chester','Waldo'];
-  // II. Making a robust object made of markup for iteration and easy reference
+  // var data = [{ name: 'Tom' },{ name: 'Jerry' }, { name: 'Blue' }];
+
+  // II. Making an object made up of markup for iteration
   var markup = {
     options: generateMarkUp(data, 'name'),
-    body: document.getElementsByTagName('body')[0],
     dropDownArrow: document.getElementsByClassName('typeahead__arrow')[0],
     dropDownInput: document.getElementsByClassName('typeahead__input')[0],
     optionsContainer: document.getElementsByClassName('typeahead__options')[0],
     option: document.getElementsByClassName('typeahead__option')
   };
-  // III. Actually rendering the markup
+
+  // III. Actually rendering the markup for the options under the type-ahead input
   renderMarkUp(markup.options, markup.optionsContainer);
+
+  // IV. Toggle the visibility of options under drop down for dropdownArrow onclick
   markup.dropDownArrow.addEventListener('click', function(){
     var optionsContainer = this.parentElement.querySelector('.typeahead__options');
-    optionsContainer.classList.contains('hidden') ? showElement(optionsContainer) : hideElement(optionsContainer);
-    // this.parentElement.querySelector('.typeahead__input').focus();
+    optionsContainer.classList.contains('hidden') ? removeClass(optionsContainer, 'hidden') : addClass(optionsContainer, 'hidden');
   });
-  markup.dropDownInput.addEventListener('focus', function(){ showElement(this.parentElement.querySelector('.typeahead__options'));});
+
+  // V. Clicking input shows options:
+  markup.dropDownInput.addEventListener('focus', function(){ removeClass(this.parentElement.querySelector('.typeahead__options'), 'hidden');});
+
+  // VI. Typing on dropdown filters responds based on keyboard input
   markup.dropDownInput.addEventListener('keyup', inputHandler);
+
+  // VII. Move Selected Class for every option onhover
+  for(option of markup.option) {
+    option.addEventListener('mouseover', addSelectedOnHover);
+  };
 }());

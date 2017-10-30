@@ -35,6 +35,7 @@ html {
         width: 4rem;
         background: @blue-light;
         margin-left: -1.6rem;
+        outline: none;
         margin-right: 60%;
         border: .10rem solid #4395CD;
         i.fa.fa-angle-down {
@@ -53,12 +54,20 @@ html {
   border: 0.1rem solid #eeeeee;
   overflow-y: scroll;
   min-height: 2rem;
+  padding: 0;
   margin: 0;
   .typeahead__option {
-    border: none;
+    border: .1rem solid transparent;
+    list-style-type: none;
+    font-size: 1.2rem;
+    outline: none;
+    padding: .5rem;
+    border-top: .1rem solid #eee;
   }
   .selected {
-    border: 1px solid red;
+    border: 1px solid @blue;
+    background-color: @blue;
+    color: white;
   }
 }
 
@@ -77,8 +86,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .typeahead__option:hover {
-    background: blue;
-    color: white;
+  cursor: pointer;
 }
 
 .hidden {
