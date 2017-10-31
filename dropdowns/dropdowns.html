@@ -46,7 +46,7 @@
       <span class="validation-error__message">This field is required</span>
     </button>
   </div>
-  <div class="type-ahead input-wrapper type-ahead__search-container">
+  <!-- <div class="type-ahead input-wrapper type-ahead__search-container">
     <label for="">Drop Down Label:</label>
     <input tabindex="0"list="type-ahead__datalist" type="text" class="type-ahead__input js_valid__target" placeholder="" required>
     <button href="" class="type-ahead__arrow">
@@ -57,6 +57,18 @@
       <span class="validation-error__message">This field is required</span>
     </button>
     <div class="type-ahead__options hidden"></div>
+  </div> -->
+  <div class="typeahead__container input-wrapper">
+    <label for="" class="typeahead__label"></label>
+    <input tabindex="0" type="text" class="typeahead__input js_valid__target" placeholder="" required>
+    <button class="typeahead__arrow">
+      <i class="fa fa-angle-down" aria-hidden="true"></i>
+    </button>
+    <button class="validation-error">
+      <i class="fa fa-exclamation"></i>
+      <span class="validation-error__message">This field is required</span>
+    </button>
+    <ul class="typeahead__options hidden"></ul>
   </div>
   <div class="radio-button-group radio-buttons__container" required>
     <label for="">Radio Button Group Label: </label>

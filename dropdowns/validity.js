@@ -10,10 +10,12 @@
     input.validity.valid ? removeInvalidClass(input) : input.parentElement.classList.add('invalid');
   }
   var removeInvalidClass = function(input) {
-    input.validity.valid && input.parentElement.classList.contains('invalid') ? input.parentElement.classList.remove('invalid') : null;
+    console.log('removeInvalidClass', input.parentElement);
+    input.parentElement.classList.remove('invalid');
   }
   for (input of markup.inputs) {
     input.addEventListener('blur', checkValidity);
     input.addEventListener('input', checkValidity);
+    input.addEventListener('click', checkValidity);
   };
 }());

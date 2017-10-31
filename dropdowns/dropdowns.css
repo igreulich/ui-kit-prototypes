@@ -69,63 +69,83 @@
 html {
   font-size: 10px;
 }
-.type-ahead__search-container {
+.typeahead__container {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
-.type-ahead__search-container .type-ahead__input,
-.type-ahead__search-container .type-ahead__arrow {
-  border-radius: .25em;
+.typeahead__container .typeahead__label {
+  display: flex;
+  font-size: 1.5rem;
+  margin: .5rem 0;
+  width: 100%;
+}
+.typeahead__container .typeahead__input,
+.typeahead__container .typeahead__arrow {
+  height: auto;
+  border-radius: .25rem;
   justify-content: center;
   align-items: center;
-  font-size: 1.2rem;
 }
-.type-ahead__search-container .type-ahead__input {
-  border: 0.1em solid #eeeeee;
+.typeahead__container .typeahead__input {
+  display: inline;
+  width: 50%;
+  line-height: 3.25rem;
+  border: 0.1rem solid #eeeeee;
   width: 50rem;
   outline: none;
-  text-indent: .25em;
+  text-indent: .25rem;
   font-size: 1.2rem;
 }
-.type-ahead__search-container .type-ahead__arrow {
-  display: flex;
-  width: 2em;
-  height: 2em;
+.typeahead__container .typeahead__arrow {
+  display: inline;
+  width: 4rem;
   background: #3e94cf;
-  margin-left: -2em;
-  border: .10em solid #4395CD;
+  margin-left: -1.6rem;
+  outline: none;
+  border: .10rem solid #4395CD;
 }
-.type-ahead__search-container .type-ahead__arrow i.fa.fa-angle-down {
+.typeahead__container .typeahead__arrow:hover,
+.typeahead__container .typeahead__arrow:focus {
+  background-color: white;
+}
+.typeahead__container .typeahead__arrow:hover i.fa.fa-angle-down,
+.typeahead__container .typeahead__arrow:focus i.fa.fa-angle-down {
+  color: #3e94cf;
+}
+.typeahead__container .typeahead__arrow i.fa.fa-angle-down {
   color: white;
-  font-size: 1.7rem;
+  font-size: 2.5rem;
 }
-.type-ahead__search-container .type-ahead span.notification {
-  display: flex;
-}
-.type-ahead__options {
-  display: flex;
-  flex-direction: column;
+.typeahead__options {
+  display: block;
   width: 48.2rem;
-  max-height: 10em;
-  border: 0.1em solid #eeeeee;
+  max-height: 10rem;
+  border: 0.1rem solid #eeeeee;
   overflow-y: scroll;
-  min-height: 2em;
+  min-height: 2rem;
+  padding: 0;
+  margin-right: 50%;
+  margin-top: 0;
 }
-.type-ahead__options input.type-ahead__option {
-  border: none;
+.typeahead__options .typeahead__option {
+  border: .1rem solid transparent;
+  list-style-type: none;
+  font-size: 1.2rem;
+  outline: none;
+  padding: .5rem;
+  border-top: .1rem solid #eee;
+}
+.typeahead__options .selected {
+  border: 1px solid #205493;
+  background-color: #205493;
+  color: white;
 }
 input::-webkit-calendar-picker-indicator {
   display: none;
 }
-.type-ahead__arrow:hover {
+.typeahead__option:hover {
   cursor: pointer;
-  background: white;
-}
-.type-ahead__arrow:hover i.fa.fa-angle-down {
-  color: #eeeeee;
-}
-input.type-ahead__option:hover {
-  background: blue;
-  color: white;
 }
 .hidden {
   display: none;
