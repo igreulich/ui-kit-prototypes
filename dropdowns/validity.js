@@ -16,6 +16,6 @@
   for (input of markup.inputs) {
     input.addEventListener('blur', checkValidity);
     input.addEventListener('input', checkValidity);
-    input.addEventListener('click', checkValidity);
+    input.addEventListener('keydown', checkValidity);
   };
 }());

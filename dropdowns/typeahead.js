@@ -131,6 +131,11 @@
     });
   }
 
+var createEvent = function(el, type){
+  var e = document.createEvent('HTMLEvents');
+  e.initEvent(type, false, true);
+  el.dispatchEvent(e);
+}
   // Adds selected option to the textInput on Click
   var addOptionToInput = function() {
     var selectedOption = event.target;
@@ -142,6 +147,8 @@
     selectedOption.classList.add('selected');
     input.value = selectedOption.innerHTML;
     addClass(event.target.parentNode, 'hidden');
+
+    createEvent(input,'input');
   };
 
   var enterOptionToInput = function(){

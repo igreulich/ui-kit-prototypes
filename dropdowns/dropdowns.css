@@ -66,6 +66,14 @@
   border-right-color: #f9dede;
   left: -0.9rem;
 }
+.checkbox-group.invalid::after {
+  content: 'This field is required.';
+  position: relative;
+  display: block;
+  color: red;
+  font-size: 1.2rem;
+  top: 18px;
+}
 html {
   font-size: 10px;
 }
@@ -245,8 +253,8 @@ html {
   height: 0;
   width: 0;
   position: relative;
-  right: 3.75rem;
-  top: 1rem;
+  left: 11rem;
+  bottom: 1.5rem;
   border: .5rem solid transparent;
   border-bottom-width: 0;
   border-top-color: #205493;
@@ -255,11 +263,6 @@ html {
   border-color: #3e94cf;
   background-color: white;
   color: #3e94cf;
-}
-form {
-  display: flex;
-  flex-direction: column;
-  margin-left: 5px;
 }
 form fieldset {
   border: none;
