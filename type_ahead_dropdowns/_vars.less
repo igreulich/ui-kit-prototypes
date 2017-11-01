@@ -1,4 +1,14 @@
+
 @blue: #205493;
 @blue-light: #3e94cf;
+@red: #e31c3d;
+@red-light: #f9dede;
 @font-normal: 1.2rem;
 @font-family-sans: 'SourceSansPro-Regular', 'Source Sans Pro', sans-serif;
+@arrow-width: .9rem;
+@line-height-normal: 1.2;
+
+//decimal-places should be 10, 100, 1000, etc
+.truncate(@number, @decimal-places) {
+  @truncate: floor(@number * @decimal-places) / @decimal-places;
+}
