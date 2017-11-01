@@ -7,152 +7,6 @@
 @verror-line-height: @line-height-normal * @font-normal; //put line height in units for calc functions
 @verror-height: calc(@verror-line-height ~"+" calc(@verror-vertical-padding * 2) ~"+" calc(@verror-border-width * 2));
 
-// .notification {
-//   .fa-exclamation::after {
-//     content: "This field is required.";
-//     position: relative;
-//     bottom: 0em;
-//     border: 1px solid @red;
-//     width: 100%;
-//     opacity: 0;
-//     padding: .25em .25em;
-//     border-radius: .25em;
-//     font-size: 1.2rem;
-//     background: #f9dede;
-//     margin-left: .25em;
-//   }
-//   .fa-exclamation:hover {
-//     &::after {
-//       opacity: 1;
-//     }
-//   }
-//   .fa-exclamation {
-//     cursor: pointer;
-//   }
-// }
-//
-// // Psuedo Styles can't be nested under a parent:
-//
-// .date-input input:invalid,
-// .select-wrapper select:invalid,
-// .text-input input:invalid,
-// .type-ahead input:invalid {
-//   border: 1px solid @red;
-// }
-//
-// // I. Select an Option Dropdown Validation Styles:
-//
-// .select:invalid {
-//   select {
-//     border: 1px solid @red;
-//   }
-//   .fa-exclamation {
-//     color: @red;
-//     font-size: @font-normal + .5em;
-//   }
-// }
-//
-// .select:valid {
-//   .fa-exclamation {
-//     display: none;
-//   }
-// }
-//
-// // overriding the styles on dropdowns.less for the select arrow
-// // cause its messed up a bit due to the exclamation icon's font size:
-// .select-wrapper::after {
-//   left: 11rem;
-// }
-//
-// // II. Date Picker Validation Features
-//
-// .date-input:invalid {
-//   &::before {
-//     content: "*";
-//     color: @red;
-//     font-weight: bold;
-//     margin-right: .25em;
-//     position: relative;
-//     bottom: .5em;
-//     left: .25em;
-//   }
-//   .fa-exclamation {
-//     color: @red;
-//     font-size: @font-normal;
-//     &::after {
-//       //content: "Invalid date entered. Format MM/DD/YYY";
-//     }
-//   }
-//   .fa-calendar {
-//     font-size: @font-normal;
-//   }
-// }
-//
-// .date-input:valid {
-//   .fa-exclamation {
-//     display: none;
-//   }
-// }
-//
-// // III. Text Input Validation
-//
-// .text-input:invalid {
-//   label {
-//     color: @red;
-//   }
-//   .fa-exclamation {
-//     color: @red;
-//     position: relative;
-//     font-size: 1.2rem;
-//   }
-//   label::before {
-//     content: "*";
-//     color: @red;
-//     font-weight: bold;
-//     margin-right: .25em;
-//   }
-// }
-//
-// .text-input:valid {
-//   .fa-exclamation {
-//     display: none;
-//   }
-// }
-//
-// // IV. Type-Ahead Validation
-//
-// .type-ahead {
-//   &:invalid {
-//     label {
-//       color: @red;
-//     }
-//     .fa-exclamation {
-//       color: @red;
-//       position: relative;
-//       font-size: 3em;
-//       left: .25em;
-//       display: flex;
-//       align-self: center;
-//     }
-//     label::before {
-//       content: "*";
-//       color: @red;
-//       font-weight: bold;
-//       margin-right: .25em;
-//     }
-//   }
-//   &:valid {
-//   .fa-exclamation {
-//     display: none;
-//     }
-//   }
-// }
-
-
-// ------------------ New Styles
-.invalid .validation-error {
-  display: inline-block;
-}
 .input-wrapper.invalid {
   input, select {
     border: @verror-border-width solid @red;
@@ -225,4 +79,32 @@
     border-right-color: @red-light;
     left: -@verror-arrow-width;
   }
+}
+
+// V. Radio Button Validation
+
+.checkbox-buttons .invalid {
+  margin-top: 2rem; // should be same as top property on ::after for whatever component is above this one
+}
+
+.checkbox-group.invalid::after {
+  content: 'This field is required.';
+  position: relative;
+  display: block;
+  color: red;
+  font-size: 1.2rem;
+  top: 2rem;
+}
+.radio-button-group.invalid::after {
+  content: 'This field is required.';
+  position: relative;
+  display: block;
+  color: red;
+  font-size: 1.2rem;
+  top: 2rem;
+  right: 21rem;
+}
+
+button#submit {
+    margin-top: 50px;
 }
