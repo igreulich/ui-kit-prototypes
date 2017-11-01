@@ -1,4 +1,6 @@
 @import '_vars.less';
+@import '_validation.less';
+@import '_typeahead.less';
 
 html {
   font-size: 10px;
@@ -45,6 +47,7 @@ html {
     position: absolute;
     width: 100%;
     padding: .5rem 0;
+    z-index: 999999;
   }
   .dropdown__item {
     padding: .5rem 1rem;
@@ -95,9 +98,9 @@ html {
     content: '';
     height: 0;
     width: 0;
-    position: absolute;
-    right: 1rem;
-    top: calc(50% ~'-' .25rem);
+    position: relative;
+    left: 11rem;
+    bottom: 1.5rem;
     border: .5rem solid transparent;
     border-bottom-width: 0;
     border-top-color: @blue;
@@ -106,5 +109,60 @@ html {
      border-color: @blue-light;
      background-color: white;
      color: @blue-light;
+  }
+}
+
+// new drop down styles for newly added drop downs:
+form {
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 1em 0;
+    input {
+      line-height: @font-normal + .5em;
+      border: 0.1em solid #eeeeee;
+      height: 2em;
+      border-radius: .25em
+    }
+  }
+  .text-input {
+    label {
+      width: 100%;
+      display: flex;
+    }
+  }
+  .type-ahead {
+    display: inline-flex;
+    flex-wrap: wrap;
+    label {
+      margin-right: 90%;
+      width: 100%;
+    }
+  }
+  .radio-button-group {
+    display: flex;
+    width: 50%;
+    .radio-buttons__container {
+      margin-top: 1em;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+      width: 33%;
+      margin-left: 1em;
+      padding: 1em;
+      border-radius: .75em;
+      label {
+        width: 80%;
+        max-width: 85%;
+      }
+      label:first-of-type {
+        width: 100%;
+        margin: 0 1em .5em 0;
+      }
+      input[type="radio"] {
+        margin-left: 1.25em;
+      }
+    }
   }
 }

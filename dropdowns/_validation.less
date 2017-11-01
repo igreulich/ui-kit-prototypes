@@ -1,0 +1,90 @@
+@import '_vars.less';
+
+@verror-arrow-width: @arrow-width;
+@verror-vertical-padding: .6rem;
+@verror-horizontal-padding: 2rem;
+@verror-border-width: 1px;
+@verror-line-height: @line-height-normal * @font-normal; //put line height in units for calc functions
+@verror-height: calc(@verror-line-height ~"+" calc(@verror-vertical-padding * 2) ~"+" calc(@verror-border-width * 2));
+
+.input-wrapper.invalid {
+  input, select {
+    border: @verror-border-width solid @red;
+  }
+  .validation-error {
+    display: inline-block;
+  }
+  label {
+    color: @red;
+    &::before {
+      content: '*';
+    }
+  }
+}
+.radio-button-group.invalid,
+.checkbox-group.invalid {
+  border: @verror-border-width dashed @red;
+  border-radius: 3px;
+
+  label:first-of-type::before {
+    content: '*';
+    color: @red;
+  }
+}
+.validation-error {
+  display: none;
+  color: @red;
+  cursor: pointer;
+  border: none;
+  font-size: @font-normal;
+  background-color: transparent;
+  line-height: @line-height-normal;
+  padding: 0;
+  &:focus .validation-error__message,
+  &:hover .validation-error__message {
+    display: inline-block;
+  }
+  .fa {
+    padding: @verror-vertical-padding .5rem;
+  }
+}
+.validation-error__message {
+  display: none;
+  border: @verror-border-width solid @red;
+  border-radius: 0 3px 3px 0;
+  margin-left: @verror-arrow-width;
+  padding: @verror-vertical-padding @verror-horizontal-padding;
+  background-color: @red-light;
+  position: relative;
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    left: calc(-@verror-arrow-width ~"-" @verror-border-width);
+    top: -@verror-border-width;
+    border-style: solid;
+    border-color: transparent @red transparent transparent;
+    .truncate(@verror-line-height, 10);
+    border-top-width: calc(calc(@truncate ~"+" calc(@verror-vertical-padding * 2) ~"+" calc(@verror-border-width * 2)) ~"/" 2);
+    border-right-width: @verror-arrow-width;
+    border-bottom-width: calc(calc(@truncate ~"+" calc(@verror-vertical-padding * 2) ~"+" calc(@verror-border-width * 2)) ~"/" 2);
+    border-left-width: 0;
+  }
+  &:after {
+    content: '';
+    border-right-color: @red-light;
+    left: -@verror-arrow-width;
+  }
+}
+
+// V. Radio Button Validation
+
+.checkbox-group.invalid::after {
+  content: 'This field is required.';
+  position: relative;
+  display: block;
+  color: red;
+  font-size: 1.2rem;
+  top: 18px;
+}
