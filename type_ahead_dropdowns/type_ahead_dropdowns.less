@@ -9,6 +9,7 @@ html {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  width: 100%;
   .typeahead__label {
     display: flex;
     font-size: 1.5rem;
@@ -24,13 +25,15 @@ html {
   }
   .typeahead__input {
     display: inline;
-    width: 50%;
     line-height: 3.25rem;
     border: .10rem solid rgb(238, 238, 238);
-    width: 50rem;
     outline: none;
+    width: 75%;
     text-indent: .25rem;
     font-size: @font-normal;
+    @media @tablet {
+      width: 50rem;
+    }
   }
   .typeahead__arrow {
       display: inline;
@@ -55,14 +58,17 @@ html {
 
 .typeahead__options {
   display: block;
-  width: 48.2rem;
+  width: 70%;
   max-height: 10rem;
   border: 0.1rem solid #eeeeee;
   overflow-y: scroll;
   min-height: 2rem;
   padding: 0;
-  margin-right: 50%;
   margin-top: 0;
+  @media @tablet {
+    width: 48rem;
+    margin-right: 30%;
+  }
   .typeahead__option {
     border: .1rem solid transparent;
     list-style-type: none;
@@ -70,23 +76,15 @@ html {
     outline: none;
     padding: .5rem;
     border-top: .1rem solid #eee;
+    &:hover {
+      cursor: pointer;
+    }
   }
   .selected {
     border: 1px solid @blue;
     background-color: @blue;
     color: white;
   }
-}
-
-//pseudo styles
-
-input::-webkit-calendar-picker-indicator {
-  display: none;
-}
-
-
-.typeahead__option:hover {
-  cursor: pointer;
 }
 
 .hidden {
