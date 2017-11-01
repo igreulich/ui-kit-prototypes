@@ -131,6 +131,12 @@
     });
   }
 
+  var createEvent = function(el, type){
+    var e = document.createEvent('HTMLEvents');
+    e.initEvent(type, false, true);
+    el.dispatchEvent(e);
+  }
+
   // Adds selected option to the textInput on Click
   var addOptionToInput = function() {
     var selectedOption = event.target;
