@@ -66,13 +66,28 @@
   border-right-color: #f9dede;
   left: -0.9rem;
 }
+.checkbox-buttons .invalid {
+  margin-top: 2rem;
+}
 .checkbox-group.invalid::after {
   content: 'This field is required.';
   position: relative;
   display: block;
   color: red;
   font-size: 1.2rem;
-  top: 18px;
+  top: 2rem;
+}
+.radio-button-group.invalid::after {
+  content: 'This field is required.';
+  position: relative;
+  display: block;
+  color: red;
+  font-size: 1.2rem;
+  top: 2rem;
+  right: 21rem;
+}
+button#submit {
+  margin-top: 50px;
 }
 html {
   font-size: 10px;

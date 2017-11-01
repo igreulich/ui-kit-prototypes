@@ -152,10 +152,11 @@ var createEvent = function(el, type){
   };
 
   var enterOptionToInput = function(){
+    console.log('enterOptionToInput');
     var selectedInput = event.target.parentElement.querySelector('.typeahead__options .selected');
-    // console.log(selectedInput.innerHTML);
     selectedInput ? event.target.value = selectedInput.innerHTML : null;
     addClass(event.target.parentElement.querySelector('.typeahead__options'), 'hidden');
+    createEvent(event.target.parentElement.querySelector('.typeahead__input'), 'input');
   };
 
   var addSelectedOnHover = function(){

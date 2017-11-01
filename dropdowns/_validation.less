@@ -80,11 +80,28 @@
 
 // V. Radio Button Validation
 
+.checkbox-buttons .invalid {
+  margin-top: 2rem; // should be same as top property on ::after for whatever component is above this one
+}
+
 .checkbox-group.invalid::after {
   content: 'This field is required.';
   position: relative;
   display: block;
   color: red;
   font-size: 1.2rem;
-  top: 18px;
+  top: 2rem;
+}
+.radio-button-group.invalid::after {
+  content: 'This field is required.';
+  position: relative;
+  display: block;
+  color: red;
+  font-size: 1.2rem;
+  top: 2rem;
+  right: 21rem;
+}
+
+button#submit {
+    margin-top: 50px;
 }

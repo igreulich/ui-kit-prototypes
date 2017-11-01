@@ -18,4 +18,10 @@
     input.addEventListener('input', checkValidity);
     input.addEventListener('keydown', checkValidity);
   };
+
+  document.getElementById('submit').addEventListener('click', function(){
+    for (input of markup.inputs) {
+      !input.validity.valid ? input.parentElement.classList.add('invalid') : removeInvalidClass(input);
+    }
+  });
 }());
