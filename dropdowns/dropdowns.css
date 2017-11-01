@@ -1,9 +1,9 @@
+.invalid .validation-error {
+  display: inline-block;
+}
 .input-wrapper.invalid input,
 .input-wrapper.invalid select {
   border: 1px solid #e31c3d;
-}
-.input-wrapper.invalid .validation-error {
-  display: inline-block;
 }
 .input-wrapper.invalid label {
   color: #e31c3d;
@@ -11,8 +11,10 @@
 .input-wrapper.invalid label::before {
   content: '*';
 }
-.radio-button-group.invalid,
-.checkbox-group.invalid {
+.radio-button-group.invalid .radio-buttons__container,
+.checkbox-group.invalid .radio-buttons__container,
+.radio-button-group.invalid .checkboxes__container,
+.checkbox-group.invalid .checkboxes__container {
   border: 1px dashed #e31c3d;
   border-radius: 3px;
 }
@@ -23,6 +25,7 @@
 }
 .validation-error {
   display: none;
+  position: relative;
   color: #e31c3d;
   cursor: pointer;
   border: none;
@@ -45,7 +48,7 @@
   margin-left: 0.9rem;
   padding: 0.6rem 2rem;
   background-color: #f9dede;
-  position: relative;
+  position: absolute;
 }
 .validation-error__message:before,
 .validation-error__message:after {

@@ -150,13 +150,14 @@
 
 
 // ------------------ New Styles
+.invalid .validation-error {
+  display: inline-block;
+}
 .input-wrapper.invalid {
   input, select {
     border: @verror-border-width solid @red;
   }
-  .validation-error {
-    display: inline-block;
-  }
+
   label {
     color: @red;
     &::before {
@@ -166,8 +167,12 @@
 }
 .radio-button-group.invalid,
 .checkbox-group.invalid {
-  border: @verror-border-width dashed @red;
-  border-radius: 3px;
+
+  .radio-buttons__container,
+  .checkboxes__container {
+    border: @verror-border-width dashed @red;
+    border-radius: 3px;
+  }
 
   label:first-of-type::before {
     content: '*';
@@ -176,6 +181,7 @@
 }
 .validation-error {
   display: none;
+  position: relative; //context for .validation-error__message
   color: @red;
   cursor: pointer;
   border: none;
@@ -198,7 +204,7 @@
   margin-left: @verror-arrow-width;
   padding: @verror-vertical-padding @verror-horizontal-padding;
   background-color: @red-light;
-  position: relative;
+  position: absolute;
   &:before,
   &:after {
     content: '';
