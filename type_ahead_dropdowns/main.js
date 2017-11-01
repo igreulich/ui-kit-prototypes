@@ -142,6 +142,7 @@
     selectedOption.classList.add('selected');
     input.value = selectedOption.innerHTML;
     addClass(event.target.parentNode, 'hidden');
+    createEvent(input, 'keydown');
   };
 
   var enterOptionToInput = function(){
@@ -149,6 +150,7 @@
     // console.log(selectedInput.innerHTML);
     selectedInput ? event.target.value = selectedInput.innerHTML : null;
     addClass(event.target.parentElement.querySelector('.typeahead__options'), 'hidden');
+    createEvent(event.target.parentElement.querySelector('.typeahead__input'), 'keydown');
   };
 
   var addSelectedOnHover = function(){
